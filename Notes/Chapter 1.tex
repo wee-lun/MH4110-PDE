@@ -1,0 +1,413 @@
+\section{Where PDEs Come From}
+
+\subsection{Notations, Definitions, and Basic Concepts}
+Throughout the notes we will adapt the following notations and symbol:
+\begin{itemize}
+    \item $u_x = \diffp{u}{x} = \partial_x u$
+    \item $u_{xy} = \diffp{u}{xy} = \partial_{xy} u$
+    \item $\nabla u = \grad u = u_x \i + u_y\j = (u_x, u_y)$
+    \item $\Delta u = u_{xx} + u_{yy}$
+    \item $\div \F = \nabla \cdot \F = u_x + v_y + w_z$ where $\F = (u,v,w)$
+    \item $\nabla \times \F = \curl F = 
+            \begin{vmatrix}
+            \i & \j & \mathbf{k} \\
+            \diffp{}{x} & \diffp{}{y} & \diffp{}{z} \\
+            u & v & w 
+        \end{vmatrix} $
+    \item Given $\vec v = (a,b) \neq \mathbf 0$. The directional derivative of $u$ along $\vec v$ at $(x,y)$ is defined by 
+        \[\nabla_{\vec v}\ u = \nabla u \cdot \frac{\vec v}{|\vec v|}\]
+\end{itemize}
+
+We assume that $u_{xy} = u_{yx}$. Some tools that will be useful are listed here:
+\begin{itemize}
+    \item Multivariable chain rule
+    \item Derivatives of integrals
+    \item Green's Theorem
+    \item Divergence Theorem
+\end{itemize}
+
+\medskip 
+
+\begin{defn} [Partial Differential Equation]
+    A partial differential equation (PDE) is an identity that relates
+\begin{itemize}
+    \item the independent variables (i.e. the inputs): $x,y, \dots$
+    \item the dependent variable $u$
+    \item the partial derrivatives of $u$
+\end{itemize}
+A PDE can be expressed in the form of $F(x,y, \dots, u, u_x, u_y, \dots, u_{xx}, u_{xy}, u_{yy}, \dots) = 0$.
+\end{defn}
+
+\medskip
+
+\begin{defn} [Order]
+    The order of a PDE is the order of the highest partial derivative that appears in the equation.
+\end{defn}
+
+\medskip
+
+\begin{defn} [Solution]
+    A solution of a PDE is a function $u(x,y,\dots)$ that satisfies the equation identically, possibly in some region of $x,y,\dots$ variables.
+\end{defn}
+
+\medskip
+
+\begin{defn} [Linear operator]
+    Let $\mathcal L$ be an operator. We say $\mathcal L$ is a linear operator if the following is satisfied
+    \[\mathcal L(u+v) = \mathcal L u + \mathcal L v \quad \text{and} \quad \mathcal L(cu) = c\mathcal L u\]
+    where $u,v$ are functions and $c$ is constant.
+\end{defn}
+
+\medskip
+
+\begin{defn} [Linearity and Homogeneity]
+    Let $\mathcal L$ be a linear operator. Then the equation $\mathcal L u =g$ is said to be linear, where $g$ is a given function of independent variables. Additionally, we say the equation is homogeneous linear equation if $g=0$, and vice versa.
+\end{defn}
+
+\medskip 
+
+\begin{thm} [Superposition principle]
+    Consider the equation $\mathcal L u =0$. Suppose that $u_1, u_2 \many u_n$ are solutions of the equations. Then the linear combination of the solutions is also a solution:
+    \[\sum_{j=1}^n  c_j u_j(x)\]
+    where $c_j$ are constants. Additionally, the sum of a homogeneous solution and an inhomogeneous solution is an inhomogeneous solution.
+\end{thm}
+
+The upshot of superposition principle is that the solution structure of a PDE is always in the form of \textbf{general solution + particular solution}, where the general solution is obtained simply solving the corresponding homogenous PDE. On the other hand, the particular solution might requires some hardwork to figure out. If the PDE is homogeneous, then the particular solution degenerates into $0$. 
+
+\subsection{First Order Linear Equation}
+Here, we will investigate the first-order linear PDE, which takes the form
+\[a(x,y) u_x + b(x,y) u_y + c(x,y)u = f(x,y)\]
+where $a,b,f$ are continuous functions in some domain $D$. In particular, the two methods to solve such PDE are geometric methods and coordinate methods.
+
+We will be using directional derivative. To interpret it, suppose given the directional derivative of $u$ along $\vec v$ is $\nabla_{\vec v} u = g(x,y)$. This means that in the direction of $\vec v$, the gradient of $u$ is $g(x,y)$.
+
+\underline{Type 1.1: $au_x + bu_y = 0$ with $a^2 + b^2 \neq 0$}
+
+We first introduce the geometric method. Firstly, the equation can be rewritten as follow: 
+\begin{align*}
+    au_x + bu_y &= 0\\
+    (a,b) \cdot \nabla u &= 0\\
+    \nabla_{(a,b)}u &= 0
+\end{align*}
+This suggests that $u(x,y)$ is constant along the direction $(a,b)$. Take note that there are three variables here: $x,y,$ and $u$, so one can picture that in a $3$-dimensional cartesian coordinate system.
+
+The line that parallel to $(a,b)$ has the equation $bx-ay=c$, where $c$ is constant. The family of such lines are called the \textit{characteristic lines}. Since $u$ is constant on these lines, the solution is then
+\[u(x,y)|_{bx-ay=c} = f(c)\]
+This means that if we only examine $(x,y)$ that lies on the line $bx-ay=c$, the output $u$ is an arbitrary function of one variable $f$. Of course, we can substitute $c$ so that the solution becomes
+\[u(x,y) = f(bx-ay)\]
+
+The next method is coordinate method. This method heavily relies on the characteristic lines (or curves), which in this case we have $bx-ay=c$. The strategy is summarised here:
+\begin{enumerate}
+    \item Changing variables, where one of the new variable has to be the form of characteristic lines (or curve).
+    \item Replace all $x$ and $y$ derivatives into the newly defined variables.
+    \item Rewrite the PDE and solve it.
+\end{enumerate}
+We use the same example to demonstrate: consider $x' = x$ and $y' = bx-ay$. By chain rule we see 
+\begin{align*}
+    \diffp{u}{x} &= u_{x'} \diffp{x'}{x} + u_{y'}\diffp{y'}{x} = u_{x'} + bu_{y'}\quad\\
+    \diffp{u}{y} &= u_{x'} \diffp{x'}{y} + u_{y'}\diffp{y'}{y} = -au_{y'}
+\end{align*}
+Then, rewrite the PDE $au_x + bu_y=0$ into 
+\[a(u_{x'}+bu_{y'}) + b(-au_{y'}) = 0\]
+which reduces to $au_{x'}=0$. If $a\neq 0$, then $u_{x'}=0$, and thus
+\[u= f(y') = f(bx-ay)\]
+If $a=0$, then we must have $b\neq 0$. The PDE then becomes $bu_y=0$, which reduces to $u_y=0$. This gives $u=f(x)$, which is a specific form of $f(bx-ay)$. To conclude, we have the solution 
+\[u = f(bx-ay)\]
+where $f$ is an arbitrary single variable function.
+
+\underline{Type 1.2: $au_x + bu_y = c$ with $a,b,c$ as constants and $a\neq 0$}
+
+Recall that from Superposition Principle the solution structure of any PDE is always 
+\[\text{general solution $+$ particular solution}\]
+Here general solution is already obtained previously. It remains to make an educated guess on form of particular solution. With experience from ODE, it is clear that we can consider $u_0(x,y)=Ax$ where $A$ is some constant. Substituting into the PDE we get 
+\[Aa + 0 = c \implies A = \frac{c}{a}\]
+Thus a particular solution is $u_0 = \frac{c}{a}x$, and the full solution is  
+\[u = f(bx-ay) + \frac{c}{a}x\]
+
+\underline{Type 1.3: $au_x + bu_y = cu$ with $a,b,c$ as constants and $a\neq 0$}
+
+Using the characteristic equation method we listed down
+\[\frac{dx}{a} = \frac{dy}{b} = \frac{du}{cu}\]
+Solving $\frac{dx}{a} = \frac{dy}{b}$ gives us
+\[bx-ay = C\]
+where $C$ is a constant.
+
+Next, relate $dx$ (or $dy$) with $du$. Thus by solving $\frac{dx}{a} = \frac{du}{cu}$ we obtain solution 
+\[\ln |u| = \frac{c}{a}x + f(C')\]
+which is equivalent to $u = e^{\frac{c}{a}x} g(C'')$ by removing the logarithm. Lastly, since $C''$ is an arbitrary constant, and previously we obtained that $bx -ay = C$ where $C$ is constant. We can substitute $C''$ so that we now get 
+\[u = e^{\frac{c}{a}x} g(bx-ay)\]
+
+\medskip 
+
+\begin{re}
+    Alternatively, one can choose the following method:
+    \begin{enumerate}
+        \item When $u=0$, check that it is a solution.
+        \item When $u\neq 0$, we can divide $u$ to obtain 
+              \[a\frac{u_x}{u} + b\frac{u_y}{u} = c\]
+        \item By setting $v= \ln |u|$, we see that $v_x = \frac{u_x}{u} + \frac{u_y}{u}$
+        \item The PDE can be rewritten as $av_x + bv_y = c$, which the solution is fully known.
+    \end{enumerate}
+\end{re}
+
+\underline{Type 2: $a(x,y)u_x + b(x,y)u_y = 0$ with $a^2 + b^2 \neq 0$}
+
+In the case that the coefficient of $u_x$ and $u_y$ are variables, similar to before, we can solve it in geometric method or coefficient method. The characteristic equation of this type is 
+\[\frac{dx}{a(x,y)} = \frac{dy}{b(x,y)} \iff \frac{dy}{dx} = \frac{b(x,y)}{a(x,y)}\]
+In general the PDE can be solved as long as the ODE above can be solved.
+
+\medskip 
+
+\begin{ex}
+    We solve $u_x + yu_y = 0$ in two methods. Regardless of which method we use, we need to solve the characteristic curves:
+    \[\frac{dy}{dx} = \frac{y}{1} \implies y = Ce^x \implies C = ye^{-x}\]
+    For the geometric method, we know that $u(x,y)$ is constant on $y=Ce^x$ where $C$ is a constant. Thus $u(x,y)=f(C)$ where $f$ is an arbitrary function of single variable. Rearranging and substituting we get general solution
+    \[u(x,y) = f(e^{-x}y)\]
+    For the coefficient method, we let $x' = x$ and $y' = ye^{-x}$. Using chain rule we obtain 
+    \[u_x = u_{x'}-ye^{-x}u_{y'} \quad \text{and} \quad u_y = e^{-x}u_{y'}\]
+    Next, rewritting $u_x + yu_y = 0$ we get $u_x' = 0$, giving us the solution 
+    \[u = f(y') = f(ye^{-x})\]
+\end{ex}
+
+\medskip 
+
+\begin{ex}
+    We solve $u_x + 2xy^2 u_y = 0$. First, the characteristic curve:
+    \[\frac{dy}{dx} = 2xy^2 \implies x^2 + \frac{1}{y}=C\]
+    where $C$ is a constant. Note that the solving process of the characteristic curve involves dividing $y$, thus we need to check separately that whether $y=0$ is a solution, which it indeed is.
+
+    Thus, using the geometric method, we see that the solution of the PDE is 
+    \[u(x,y) = f(C) = f\br{x^2 + \frac{1}{y}}\]
+    Notice that this expression does not degenerate to another solution $y=0$, thus the complete solution is 
+    \[u(x,y) = f(C) = f\br{x^2 + \frac{1}{y}} \quad \text{or} \quad y=0\]
+\end{ex}
+
+In summary, first order linear PDE can be fully solved using the method of characteristic, and combined with geometric method or coefficient method. Say given $P(x,y)u_x + Q(x,y)u_y = R(x,y,u)$, the characteristic equations are
+\[\frac{dx}{P} = \frac{dy}{Q} = \frac{du}{R}\]
+
+\subsection{Flows, Vibrations, and Diffusions}
+In this part, we introduce some PDEs that describe physical phenomenon. We omit the derivation of most PDEs here. One who is interested can check any standard PDE materials on his own.
+
+Specifically, the three fundamental PDEs of this course are:
+\begin{itemize}
+    \item Wave equation, which describes vibrations.
+    \item Heat equation, which describes flows.
+    \item Laplace equation, which describes diffusions.
+\end{itemize}
+
+\underline{Transport Equation: $u_t(x,t) + cu_x(x,t)=0$}
+
+Transport equation describe the density of cars on a road way under ideal conditions. We will derive this equation here.
+
+We assume that the road is long and straight, with all the cars running at the same speed $c$. Also we assume that no cars entering or exiting the road. Define $u(x,t)$ be the car density at time $t$ and position $x$.
+
+The number of cars in the interval $[0,b]$ at time $t$ can be calculated as 
+\[M = \int^b_0 u(x,t) dx\]
+Since all the cars are in constant speed $c$, at the later time $t+h$ they move to the right by $ch$ km. Thus we have 
+\[M = \int_0^b u(x,t) dx = \int_{ch}^{b+ch}u(x,t+h)dx\]
+where differentiating both sides wrt $b$ we get 
+\[u(b,t) = u(b+ch, t+h)\]
+By changing the specific location $b$ to an arbitrary position $x$ and rearranging the equation we get 
+\[u(x+ch, t+h) - u(x,t) = 0\]
+We are interested at the car density at some sudden time instead of a time interval. So we divide $h$ and take limit $h\to 0$:
+\begin{align*}
+    \lim_{h\to 0} \frac{u(x+ch, t+h) - u(x,t)}{h} &= 0\\
+    \lim_{h\to 0} \frac{u(x+ch, t+h) - u(x+ch, t) +u(x+ch, t) - u(x,t)}{h} &= 0 \\
+    \lim_{h\to 0} \frac{u(x+ch, t+h) - u(x+ch, t)}{h} +\lim_{h\to 0}\frac{u(x+ch, t) - u(x,t)}{h} &= 0 \\
+    \diffp{u(x,t)}{t} +c\diffp{u(x,t)}{x} &= 0 
+\end{align*}
+This gives us
+\[u_t(x,t) + cu_x(x,t)=0\]
+This is a first order linear PDE. The characteristic line is $ct-x= W$ where $W$ are arbitrary constants, and the general solution is $f(ct-x)$ where $f$ is arbitrary function.
+
+\medskip 
+
+\begin{re}
+    Of course we can check if the derived equation is consistent or not, in the sense that if the units of two terms agree. Here $u_t$ has the unit of numbers of car per second. Recall $c$ is speed, so it has unit meter per second. Also $u_x$ has unit of numbers of car per meter squared (due to the extra derivative $\partial / \partial x$). Together $cu_x$ has unit of numbers of car per second.
+\end{re}
+
+\medskip 
+
+\begin{re}
+    In the case that the car moves to left, then $c$ is taken to be negative. 
+\end{re}
+
+\underline{Wave Equation: $u_{tt} = c^2 u_{xx}$}
+
+This is first of the three fundamental PDEs of this course. Wave equation gives the PDE that describe, clearly, waves. In general, there are two types of waves in 2D: transverse wave and longitudinal wave. 
+
+\includegraphics[scale = 0.4]{Waves.jpg}
+
+The wave equation introduced here describes transverse wave and assume that no involmen of longitudinal wave. First, we introduce several variables:
+\begin{itemize}
+    \item Linear density $\rho$: unit of mass per unit of length.
+    \item Then $\rho dx$ is then the unit of mass of length segment $dx$
+    \item Let $u(t,x)$ be the displacement of strings from equilibrium position at time $t$ and position $x$.
+    \item We assume the linear density is constant throughout the string.
+    \item We ignore all other forces except for the tension $\mathbf{T}(x,t)$.
+\end{itemize}
+
+\medskip
+
+\begin{defn} [Wave Equation]
+    Assuming that $T$ is a constant, the wave equation takes the form 
+    \[u_{tt} = c^2 u_{xx}\]
+    where $c = \sqrt{\frac{T}{\rho}}$ is the wave speed.
+\end{defn}
+
+\medskip 
+
+ \begin{re}
+    We listed some variants of wave equations here.
+    \begin{itemize}
+        \item If considering air resistance $r$, the wave equation is then
+                \[u_{tt}-c^2 u_{xx} + ru_t=0\]
+        \item If there is a traverse elastic force, the wave equation becomes 
+                \[u_{tt}-c^2 u_{xx} + ku=0\]
+        \item If there is an external force $f$, the wave equation becomes 
+                \[u_{tt}-c^2u_{xx} = f(x,t)\]
+        \item There is wave equation for multidimensional case, but will not be mentioned here.
+    \end{itemize}
+ \end{re}
+
+ \underline{Heat Equation: $u_t = k(u_{xx} + u_{yy} + u_{zz})$}
+
+ This is the second of the three fundamental PDEs of this course. Despite suggested by its name, heat equation can describe general flows. Again, we first introduce the variables needed:
+ \begin{itemize}
+    \item We work in a Minskowski space, i.e. spatial dimension $(x,y,z)$ that describes the position and dimension $t$ that describe the time. This is equivalent to $\R^4$.
+    \item Let $u(x,y,z,t)$ be the temperature at point $(x,y,z)$ and time $t$.
+    \item Let $D$ be a domain in $\R^3$ that represents the body, and $H(t)$ be the amount of heat (or energy) in $D$.
+    \item Let $\rho$ be the density of the material.
+    \item Let $c$ be the specific heat of the material (In physics, specific heat is the energy needed to raise one unit of mass of a substance by one unit of temperature. Simply speaking, it is just a constant.)
+    \item Let $\kappa$ be the heat conductivity of the material. (Another constant. Simply speaking, it descirbes the material's ability to conduct heat. Larger values represents better conductivity.)
+ \end{itemize} 
+
+For the sake of simplicity, we assume that the space ($\R^3$) outside the body ($D$) is colder. With that said, the direction of the heat flow, or more accurately, the energy flux, go from inside to outside. 
+
+\medskip 
+
+\begin{defn} [Heat Equation]
+    With all defined notations, the heat equation takes the form 
+    \[c\rho u_t = \nabla \cdot (\kappa \nabla u)\]
+    In the case that $c,\rho$ and $\kappa$ are constant, we can combine the constant into $k = \frac{\kappa}{c\rho}$ and the equation becomes
+    \[u_t = k\triangle u\]
+    where recall $\triangle u = u_{xx} + u_{yy} + u_{zz}$.
+\end{defn}
+
+Ultimately, the heat equation says that the heat flow $u_t$ is propotional to $\triangle u$.
+
+\medskip 
+
+\begin{re} [Interepretation of heat equation.]
+    In 1D, we learned that the second derivative represents the curvature of the curve: concave or convex. In particular, if $\triangle u = u_{xx}$
+    \begin{itemize}
+        \item $=0$, it means that it is a straight line. (The point is the same as its neighbors).
+        \item $>0$, it means that concave upwards ($\cup$ shape, the point is lower than its neighbors).
+        \item $<0$, it means concave downwords ($\cap$ shape, the point is higher than its neighbors)
+    \end{itemize}In the 3D case, the expression $\triangle u = u_{xx} + u_{yy} + u_{zz}$ carries the same interpretation. The only difference is that we are now talking about 'temperature', so the higher the values of $|\triangle u|$, the larger the temperature difference between the point and its surroundings neighbors, and thus it is expected to have higher heat flow, i.e. higher $u_t$.
+\end{re}
+
+\medskip
+
+\underline{Laplace equation: $u_{xx} + u_{yy} + u_{zz} = 0$}
+
+Laplace equation describes diffusions. Think of a room with a heat source, it is clear that the heat is not homogeneous in the room: the closer the heat sources, the higher the heat. Assuming that the heat source exists in the room for long enough time, the temperature of the room is eventually homogeneous. In this case, the heat does not change with time, thus the heat flow $u_t$ is $0$. Therefore from heat equation we obtain:
+
+\medskip 
+
+\begin{defn} [Laplace equations]
+    With same notation defined previously, the Laplace equation takes the form 
+    \[\triangle u = u_{xx} + u_{yy} + u_{zz} = 0\]
+    and its solutions are called harmonic solutions.
+\end{defn}
+
+In the case that the above PDEs is inhomogeneous, i.e. $\triangle u = f$ for some non-zero $f$, we called it the \textit{Poisson equation}.
+
+\subsection{Initial and Boundary Conditions}
+
+As in ODE, the solution we get from a PDE actually comprises a whole family of functions that satisfies the given equation. In reality, some conditions are required to single out a solution. These conditions fall into two types: initial conditions and boundary conditions.
+
+\textit{Intial condition} specify the physical state at a particular time $t_0$. Simply speaking, it gives what happens exactly at same positions and time. 
+
+On the other hand, \textit{boundary condition} gives a domain $D$ for which the PDE is defined. 
+
+\medskip 
+
+\begin{ex} [Examples of boundary conditions.]
+    Let $D$ be a domain where a given PDE is defined. Let $\mathbf n$ be the unit normal vector pointing outwards on $\partial D$. Let $\Gamma \subseteq \partial D$.
+    \begin{itemize}
+        \item Dirichlet boundary condition: $u(\mathbf{x}, t)\mid _{\Gamma} = g(\mathbf{x},t)$
+        \item Neumann boundary condition: $u_{\mathbf n}\mid_\Gamma = g(\mathbf{x},t)$
+        \item Robin boundary condition: $(u_{\mathbf{n}} + au)|_\Gamma = g(\mathbf{x},t)$
+    \end{itemize}
+\end{ex}
+In any of the above example, we say the boundary conditions are homogeneous if $g(\mathbf{x},t) = 0$, and inhomogeneous otherwise.
+
+\subsection{Well-posedness of a PDE}
+Suppose given a PDE in a domain $D$ with a set of initial and/or boundary conditions. We say it is well-posed if all the following are met:
+\begin{enumerate}
+    \item (Existence) There exists at least one solution.
+    \item (Uniqueness) There exists a unique solution.
+    \item (Stability) Small changes in the initial and/or boundary conditions lead to small changes in the output.
+\end{enumerate}
+Well-posedness is an important property to have if one is using PDE to study the actual world. In particular, existence and uniqueness ensures that the model(PDE) is reliable, and stability gives basic control of the system due to continuous dependence.
+
+\subsection{Types of Second-Order Equations}
+We have investigated first-order linear PDE in the previous section, where we demonstrate how it can be reduced to an ODE problem via the method of characteristic curves. We now study second-order linear PDE. We will only go through the types of PDEs in this part, and the solution of each PDE will be presented in the next chapter.
+
+\medskip 
+
+\begin{defn} [Second-order linear PDE]
+    A second-order linear PDE with $n$ variables $x_1, x_2 \many x_n$ is a PDE that takes the form 
+    \begin{equation} \label{eqn: 2nd-ord-pde}
+        \sum_{i,j=1}^n a_{ij}u_{x_i x_j} + \sum_{i=1}^n a_i u_{x_i} + a_0u = 0
+    \end{equation}
+    where all constants $a_{ij}, a_i$, and $a_0$ are reals. Recall that we assumed that mixed derivatives are equal, thus we have $a_{ij} = a_{ji}$.
+\end{defn}
+
+\medskip 
+
+\begin{defn} [Coefficient Matrix and Eigenvalues of PDEs]
+    Suppose given a second-order linear PDE of form (\ref{eqn: 2nd-ord-pde}). Its coefficient matrix is defined to be the $n\times n$ matrix where the $(i,j)$-th entry is the coefficient $a_{ij}$. The eigenvalues of a PDE is the eigenvalues of its coefficient matrix.
+\end{defn}
+
+\medskip 
+
+\begin{defn} [Elliptic, Hyperbolic, Ultrahyperbolic, and Parabolic PDEs]
+    Suppose given a second-order linear PDE of form (\ref{eqn: 2nd-ord-pde}). We have the following classification of a given PDE:
+    \begin{itemize}
+        \item Elliptic: if all its eigenvalues are positive or negative.
+        \item Hyperbolic: if all its eigenvalues are non-zero, and one of them has opposite sign from the other $n-1$ eigenvalues.
+        \item Ultrahyperbolic: if all its eigenvalues are non-zero, and at least two of them are positive as well as at least two of them are negative.
+        \item Parabolic: if exactly one of them is zero, and all others have the same sign.
+    \end{itemize}
+\end{defn}
+
+Note that wave equation, heat equation, and Laplace equation are all second-order linear PDEs. We can now have a classification of them 
+\begin{center}
+    \begin{tabular} {c | c |c | c}
+        PDEs & Form & Eigenvalues & Types \\
+        \hline
+        Wave equation & $u_{tt} - c^2(u_{xx} + u_{yy} + u_{zz}) = 0$ & $\sbr{1^{(1)}, {-c^2}^{(3)}}$ & Hyperbolic \\
+        \hline
+        Heat equation & $u_t - k(u_{xx} + u_{yy} + u_{zz}) = 0$ & $\sbr{0^{(1)}, {-k}^{(3)}}$ & Parabolic \\
+        \hline
+        Laplace equation & $u_{xx} + u_{yy} + u_{zz} = 0$ & $\sbr{1^{(4)}}$ & Elliptic 
+    \end{tabular}
+\end{center}
+
+From linear algebra we know that the determinant $\det(A)$ of a matrix $A$ equals to the product of all its eigenvalues. The following theorem is obtained from this relation:
+
+\medskip 
+
+\begin{thm}
+    Given a second-order linear PDE with two variables:
+    \[a_{11}u_{xx} + 2a_{12}u_{xy} + a_{22}u_{yy} + a_1u_x + a_2u_y + a_0u=0\]
+    Denote its coefficient matrix as $A$. We have:
+    \begin{enumerate}
+        \item If $\det(A)>0$, then the PDE is of elliptic type.
+        \item If $\det(A)<0$, then the PDE is of hyperbolic type.
+        \item If $\det(A)=0$, then the PDE is of parabolic type. 
+    \end{enumerate}
+\end{thm}
+\textbf{Improtant:} This determinant test does not apply for second-order linear PDE with more than two variables!

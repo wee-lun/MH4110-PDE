@@ -1,0 +1,87 @@
+\newpage
+\section{Waves and Diffusions}
+\subsection{The Wave Equation}
+
+We have defined wave equation is the previous chapter. Note that if we take the wave equation on $\R$, it takes the form of 
+\[u_{tt} = c^2 u_{xx}\]
+where $x\in \R$ is a variable of reals, and the constant $c>0$ is the wave speed. We will study its solution in this part.
+
+\underline{Method 1: Factorization of the differential operator}
+
+Note that we can rewrite the equation into 
+\[u_{tt}-c^2u_{xx} = \br{\diffp{}{t} - c\diffp{}{x}}\br{\diffp{}{t} + c\diffp{}{x}}u = 0\]
+where what we done is to factorize the differential operators.
+
+Next, define 
+\begin{align*}
+    v &= \br{\diffp{}{t} + c\diffp{}{x}}u \\
+    &= u_t + cu_x
+\end{align*}
+The wave equation can then be rewritten as 
+\[\br{\diffp{}{t} - c\diffp{}{x}}v = 0 \implies v_t - cv_x = 0\]
+This is a first-order linear PDE, which its solution is fully known.
+
+By the method of characteristic, we see that 
+\[v(x,t) = h(x+ct)\]
+where $h$ is an arbitrary function. Recovering $v$ we see 
+\[u_t + cu_x = h(x+ct)\]
+This is again a first-order linear PDE, except that it is inhomogeneous. To solve this, we have to solve its general solution and particular solution.
+
+Its general solution is $u=g(x-ct)$ where $g$ is an arbitrary function. For the particular solution, we can verify that $u= f(x+ct)$ is a particular solution:
+\[h(x+ct) = u_t + cu_x = cf'(x+ct) + cf'(x+ct) = 2c f'(x+ct)\]
+where we see we can take function $f$ so that $f'(x+ct) = \frac{1}{2c}h(x+ct)$.
+
+Therefore the solution is 
+\[u(x,t) = f(x+ct) + g(x-ct)\]
+where $f$ and $g$ are arbitrary functions.
+
+\underline{Method 2: Characteristic Coordinates}
+We can introduce the characteristic coordinates 
+\[\xi = x+ct \quad \text{and}\quad \eta = x-ct\]
+By chain rule, we obtain 
+\[\diffp{}{x} = \diffp{}{\xi} + \diffp{}{\eta} \quad \text{and} \quad \diffp{}{t} = c\diffp{}{\xi} - c\diffp{}{\eta}\]
+as well as 
+\[\diffp[2]{}{x} = \diffp[2]{}{\xi} + 2\diffp{}{{\xi}{\eta}} + \diffp[2]{}{\eta} \quad \text{and} \quad \diffp[2]{}{t} = c^2 \br{\diffp[2]{}{\xi} - 2\diffp{}{{\xi}{\eta}} + \diffp[2]{}{\eta}}\]
+Substituting these into wave equation we get 
+\[u_{tt} -c^2 u_{xx} = -4c^2u_{\xi\eta} = 0\implies u_{\xi\eta} = 0\]
+Solving out, we get solution 
+\[u = f(\xi) + g(\eta) = f(x+ct) + g(x-ct)\]
+where $f$ and $g$ are two arbitrary functions.
+
+\medskip 
+
+\begin{re}
+    The above methods actually suggest that the wave equation has two families of characteristic lines: $x\pm ct = \text{constant}$. As the time $t$ increases:
+    \begin{itemize}
+        \item $g(x-ct)$ is a wave that travels to the right at speed $c$.
+        \item $f(x+ct)$ is a wave that travels to the left at speed $c$.
+    \end{itemize}
+\end{re}
+
+As wave equation is motivated from physical phenomenon, it is natural to discuss how to solve its IVP. Suppose given the initial condition 
+\[u(x,0) = \phi(x) \quad \text{and} \quad u_t(x,0) = \psi(x) \quad \text{and} \quad -\infty<x<\infty\]
+where $\phi$ and $\psi$ are arbitrary functions of single variable $x$, we want to give the exact solution to the wave equation. Since the solution $u = f(x+ct) + g(x-ct)$ is known, by substituting specific $x$ and/or $t$, and taking derivative when necessarily, we obtain:
+\[u(x,0) = f(x) + g(x) = \phi(x)\implies f'(x) + g'(x) = \phi'(x)\]
+and 
+\[u_t(x,0) = cf'(x) -cg'(x) = \psi(x)\]
+These two equations give 
+\[\left\{
+     \begin{array}{ll}
+        f'(x) &= \frac{1}{2} \phi'(x) + \frac{1}{2c} \psi(x)\\
+        g'(x) &= \frac{1}{2} \phi'(x) - \frac{1}{2c} \psi(x)
+    \end{array}
+\right.\]
+Integrating, we get 
+\[\left\{
+     \begin{array}{ll}
+        f(x) &= \frac{1}{2} \phi(x) + \frac{1}{2c} \int_0^x \psi(s) ds + A\\
+        g(x) &= \frac{1}{2} \phi(x) - \frac{1}{2c} \int_0^x \psi(s) ds + B
+    \end{array}
+\right.\]
+Taking sum of two equations, we get $f(x) + g(x) = \phi(x) + (A+B)$. However, by comparing with the initial condition $u(x,0) = f(x) + g(x) = \phi(x)$, we see that $A+B=0$.
+
+Lastly, substitute the obtained $f$ and $g$ into the solution $u(x,t) = f(x+ct) + g(x-ct)$ and simply into 
+\[u(x,t) = \frac{1}{2}[\phi(x+ct) + \phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} \psi(s) ds\]
+This is the solution formula for the IVP of wave equation. In particular, the setup of the IVP is called \textit{Cauchy Problem}, and the obtained solution formula is called the \textit{d'Alambert Formula}.
+
+\subsection{Causality and Energy}

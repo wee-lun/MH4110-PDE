@@ -1,0 +1,139 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Packages %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{esdiff}
+
+% math packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts, dsfont}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools, extpfeil}
+
+% for better cross-reference workflow
+\usepackage{showlabels}
+\usepackage[bookmarks=True]{hyperref}
+\usepackage{bookmark}
+\renewcommand{\arraystretch}{1.5}
+
+% for better list and enumeration
+\usepackage[shortlabels]{enumitem}
+
+% to-do notes
+\usepackage{todonotes}
+
+% Removes paragraph indent and adds spacing between paragraphs
+\usepackage[parfill]{parskip} 
+\usepackage{setspace}
+
+% darkmode
+\usepackage{darkmode}
+%\enabledarkmode
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Environment %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{pro}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{re}[thm]{Remark}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Symbol %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Q}{{\mathbb Q}}
+
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\curl}{\operatorname{curl}}
+\newcommand{\F}{\mathbf{F}}
+
+\renewcommand{\div}{\operatorname{div}}
+\renewcommand{\i}{\mathbf{i}}
+\renewcommand{\j}{\mathbf{j}}
+
+\newcommand{\pd}{+\dots+}
+\newcommand{\many}{,\dots, }
+\newcommand{\ten}{\otimes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% New Command %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Rounded brackets
+\newcommand{\br}[1]{\left(#1\right)}
+
+% Curly Brackets
+\newcommand{\sbr}[1]{\left\{#1\right\}}
+
+% Functions
+\newcommand{\func}[2]{#1 \br {#2}}
+
+% Inverse functions
+\newcommand{\invfunc}[3]{#1^{-#2} \br {#3}}
+
+% Compact list
+\setlist[itemize]{itemsep=3pt, topsep=2pt}
+\setlist[enumerate]{itemsep=3pt, topsep=2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Size %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Spacing %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parskip}{0.5\baselineskip} 
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{titlepage}
+        \centering
+        \hfill\par
+        \vspace{4\baselineskip}
+        {\Huge 
+        MH4110: Partial Differential Equations}
+        \vspace{4\baselineskip}
+        
+        {by \Large\textsc{Loo Wee Lun}\par}
+        \vfill
+        \em Taken during AY 25/26 at\par
+        {\em School of Physical and Mathematical Sciences} \par
+        {\em Nanyang Technological University}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+\setcounter{section}{-1}
+\section{Preface and Disclaimer}
+This note is written by me, a student who taken the course MH4110: Partial Differential Equations under Prof. Tong Ping during academic year 25/26 at the School of Physical and Mathematical Sciences of Nanyang Technological University in Singapore. 
+
+I hereby disclaim that the contents of this note are intended solely for my personal use and are not originally produced by me, except for the presentation of the definitions and the written proofs. I do not take responsibility for any grammatical or mathematical errors in this note. The note may be incomplete, and once the course is finished, I will no longer update it for any reason.
+
+
+\newpage
+\input{Chapter 1}
+\input{Chapter 2}
+
+
+
+
+\end{document}
