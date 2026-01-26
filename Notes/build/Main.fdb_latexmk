@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1769434888.55367 "/Users/weelun/Documents/Y4S2/MH4110 PDE/Notes/Main.tex" "build/Main.pdf" "Main" 1769434889.17039 0
+["pdflatex"] 1769435023.9064 "/Users/weelun/Documents/Y4S2/MH4110 PDE/Notes/Main.tex" "build/Main.pdf" "Main" 1769435024.49922 0
   "/Users/weelun/Documents/Y4S2/MH4110 PDE/Notes/Main.tex" 1769431751.02476 3685 825b526e365dfea3d78bec103e057f60 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -209,11 +209,11 @@
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1757671080 3345740 e4de162bc7f131754d19d115081aa641 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "Chapter 1.tex" 1769431785.49823 23025 0e4c586d14d3fe93d74ee5bd9d859d67 ""
-  "Chapter 2.tex" 1769434888.44768 4409 ee30a2704ddc60694eab19dd13fe2d2e ""
+  "Chapter 2.tex" 1769435023.79168 4404 544b88d49f8072b79a455745ca681423 ""
   "Main.tex" 1769431751.02476 3685 825b526e365dfea3d78bec103e057f60 ""
   "Waves.jpg" 1769418760.64452 75300 e5c28a7318308b620f1e113f6e3e7133 ""
-  "build/Main.aux" 1769434889.09551 5645 cfccdd8b1022e8f96706e5d0d46afbee "pdflatex"
-  "build/Main.toc" 1769434889.09654 987 4437680c6290c7972609da8309f2fd8e "pdflatex"
+  "build/Main.aux" 1769435024.42853 5645 cfccdd8b1022e8f96706e5d0d46afbee "pdflatex"
+  "build/Main.toc" 1769435024.42952 987 4437680c6290c7972609da8309f2fd8e "pdflatex"
   (generated)
   "build/Main.aux"
   "build/Main.log"
