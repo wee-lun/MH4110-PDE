@@ -35,7 +35,20 @@ Therefore the solution is
 \[u(x,t) = f(x+ct) + g(x-ct)\]
 where $f$ and $g$ are arbitrary functions.
 
+\medskip 
+
+\begin{ex}
+    Suppose given $u_{xx} - 3u_{xt}-4u_{tt}=0$. This can be viewed as the same to factorize 
+    \[x^2 - 3xt -4t^2=0\]
+    which is $(x-4t)(x+t)=0$. Translating back, the given PDE can be factorized as 
+    \[(\partial_x - 4\partial_t)(\partial_x + \partial_t)u=0\]
+    To continue solving the PDE, simply let $v=(\partial_x + \partial_t)u$ so that the PDE can be rewritten as 
+    \[v_x - 4v_t=0\]
+    The remaining process to continue the solution is the same as described in the above paragraph, the details are omitted here.
+\end{ex}
+
 \underline{Method 2: Characteristic Coordinates}
+
 We can introduce the characteristic coordinates 
 \[\xi = x+ct \quad \text{and}\quad \eta = x-ct\]
 By chain rule, we obtain 
