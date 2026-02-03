@@ -8,4 +8,4 @@
 \contentsline {subsection}{\numberline {1.6}Types of Second-Order Equations}{10}{subsection.1.6}%
 \contentsline {section}{\numberline {2}Waves and Diffusions}{12}{section.2}%
 \contentsline {subsection}{\numberline {2.1}The Wave Equation}{12}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Causality and Energy}{13}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Causality and Energy}{14}{subsection.2.2}%

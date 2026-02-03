@@ -97,4 +97,100 @@ Lastly, substitute the obtained $f$ and $g$ into the solution $u(x,t) = f(x+ct) 
 \[u(x,t) = \frac{1}{2}[\phi(x+ct) + \phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} \psi(s) ds\]
 This is the solution formula for the IVP of wave equation. In particular, the setup of the IVP is called \textit{Cauchy Problem}, and the obtained solution formula is called the \textit{d'Alambert Formula}.
 
+\medskip 
+
+\begin{re} [General d'Alambert Formula]
+    If the given IVP is not starting at $t=0$, say $t=t_0 >0$, one can perform a change of variable by setting $t'=t-t_0$, so that the d'Alambert Formula can be applied to solve the IVP. In general, the formula for solving such IVP is 
+    \[u(x,t) = \frac{1}{2}[\phi(x+c(t-t_0)) + \phi(x-c(t-t_0))] + \frac{1}{2c}\int_{x-c(t-t_0)}^{x+c(t-t_0)}\psi(s) ds\]
+\end{re}
+
 \subsection{Causality and Energy}
+We have discussed d'Alambert formula previously. Note that $u(x,t)$ depends on the values of $\phi$ and $\psi$. In particular, the value $u(x,t)$ is affected by the following:
+\begin{itemize}
+    \item value of $\phi$ at point $(x-ct,0)$
+    \item value of $\phi$ at point $(x+ct,0)$
+    \item value of $\psi$ on the interval $[x-ct, x+ct]$.
+\end{itemize}
+The interval $[x-ct,x+ct]$ seems important as all informations are contained here. 
+
+\medskip 
+
+\begin{defn} [Interval of Dependence, Domain of Dependence]
+    The interval of dependece for point $(x,t)$ is defined to be the interval $[x-ct, x+ct]$. The domain of dependence (or the past history) of the point $(x,t)$ refers to the triangular region with vertices $(x-ct,0), (x-ct,0),$ and $(x,t)$
+\end{defn}
+ 
+\begin{center}
+    \includegraphics[scale=0.5]{interval of dependence.png}
+\end{center}
+
+\begin{re}
+    The triangular region is called the past history of point $(x,t)$ for a reason. Consider that at the moment when the time equals to $t$, and we are in position $x$. This makes that everything within the triangular region representing 'the past' from when the time is $t$, since the second coordinate of all point within the triangular region is smaller than $t$. 
+
+    Another physical interpretation of the triangular region is that, only the points inside the triangular region affects the value of $u(x,t)$, and hence the name domain of dependence. If something outside the region is altered, it won't affect the value of $u(x,t)$.
+\end{re}
+
+We can change our perspective by asking, suppose given a starting point $(x_0,0)$, \textbf{for which point $(x,t)$ where the value of $u(x,t)$ will be affected by the given point}. Clearly, many points will be affected, and these points are exactly the points within the shaded region in the following diagram:
+\begin{center}
+    \includegraphics[scale = 0.5]{region of influence.png}
+\end{center}
+
+\begin{minipage} [t] {0.6 \textwidth}
+    \begin{defn} [Region of Influence]
+        The region of influence of the point $(x_0, 0)$ is defined to be the shaded region above. 
+    \end{defn}
+
+    \medskip
+
+    The value $u(x,t)$ is affected by $(x_0, 0)$ if and only if
+    \[x-ct\leq x_0 \leq x+ct\]
+    given that the speed of the wave is bounded by $c$.
+    
+    \medskip 
+
+    \begin{re} [Minkowski's light cone]
+        Since light has the property of wave-particle duality, photons obey the wave equation. The Minkowski's light cone, which illustrates causality from past and future, is related by the above concept.
+    \end{re}
+\end{minipage}
+\begin{minipage}[t]{0.4 \textwidth} % Image occupies 35% of the width
+        \vspace{0pt} % Aligns the top of the image with the top of the text
+        \centering
+        \includegraphics[scale = 0.5]{lightcone.png}
+\end{minipage}
+
+\medskip 
+
+\begin{defn} [Kinetic Energy, Potential Energy, and Total Energy]
+    Consider an infinite string with constant linear density $\rho$ and tension magnitude $T$. Inheritting the above notation: 
+    \begin{itemize}
+        \item The kinetic energy at time $t$ is defined as \[E_K(t) = \frac{1}{2}\rho \int_{-\infty}^\infty u_t^2(x,t)\ dx\]
+        \item The potential energy at time $t$ is defined as \[E_P(t) = \frac{1}{2}T\int_{-\infty}^\infty u_x^2(x,t)\ dx\]
+    \end{itemize}
+    The total energy at time $t$ is just the sum of the kinetic energy and potential energy, both at time $t$:
+    \[E(t) = \frac{1}{2}\int_{-\infty}^{\infty}(\rho u_t^2 + T u_x^2)\ dx\]
+\end{defn}
+
+\begin{re} [Conservation of Energy]
+    It is well-known that energy is conserved in a closed system. Mathematically, it means that the rate of change of total energy is $0$. Thus, showing the conservation of energy is equivalent to showing that $E'(t) = 0$. 
+
+    So, we first obtain 
+    \[E'(t) = \int_{-\infty}^\infty (\rho u_t u_{tt} + T u_x u_{xt})\ dx\]
+    Note that the wave equation gives $u_{tt} = c^2 u_{xx}$, where expanding out $c$ we see that $\rho u_{tt} = T u_{xx}$. Substituting we get 
+    \[E'(t) = \int_{-\infty}^\infty (T u_t u_{xx} + T u_x u_{xt})\ dx = T\int_{-\infty}^\infty (u_t u_{xx} + u_x u_{xt})\ dx\]
+    Note that $u_t u_{xx} + u_x u_{xt} = \diffp{}{x}(u_tu_x)$, again substituting we get 
+    \[E'(t) = T\int_{-\infty}^\infty \diffp{}{x}(u_tu_x)\ dx\]
+    By Fundamental Theorem of Calculus, it can be evaluated as 
+    \[E'(t) = T u_t u_x \Big |^\infty_{-\infty}\]
+    Of course, we assume that the energy is finite, so the wave flatten and rest eventually if we moved far enough away from the source $x=0$. Recall that $u_t$ represents velocity and $u_x$ represents the slope of the wave. At $x=\pm \infty$, the string is now flat and still, which implies $u_x = 0$ and $u_t = 0$ respectively. Thus 
+    \[ E'(t) = T u_t u_x \Big |^\infty_{-\infty} = 0 - 0 = 0 \]
+\end{re}
+
+The above can be summarized as follow:
+
+\medskip 
+
+\begin{thm} [Conservation of Energy and IVP]
+    Adapting the same notation, we see that 
+    \[E(t) = \text{constant}\quad \forall t\geq 0\]
+    In addition, suppose given IVP $u(x,0) = \phi(x)$ and $u_t(x,0)=\psi(x)$, then 
+    \[E(t) = E(0) = \frac{1}{2}\int_{-\infty}^\infty \br{\rho\psi^2(x) + T(\phi'(x))^2}\ dx\]
+\end{thm}

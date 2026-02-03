@@ -348,6 +348,23 @@ INPUT ./Chapter 2.tex
 INPUT ./Chapter 2.tex
 INPUT ./Chapter 2.tex
 INPUT Chapter 2.tex
+INPUT ./interval of dependence.png
+INPUT ./interval of dependence.png
+INPUT ./interval of dependence.png
+INPUT ./interval of dependence.png
+INPUT ./interval of dependence.png
+INPUT ./region of influence.png
+INPUT ./region of influence.png
+INPUT ./region of influence.png
+INPUT ./region of influence.png
+INPUT ./region of influence.png
+INPUT ./lightcone.png
+INPUT ./lightcone.png
+INPUT ./lightcone.png
+INPUT ./lightcone.png
+INPUT ./lightcone.png
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecti0700.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecti0500.tfm
 INPUT build/Main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
@@ -356,6 +373,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
