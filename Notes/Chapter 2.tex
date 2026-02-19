@@ -129,7 +129,11 @@ The interval $[x-ct,x+ct]$ seems important as all informations are contained her
     Another physical interpretation of the triangular region is that, only the points inside the triangular region affects the value of $u(x,t)$, and hence the name domain of dependence. If something outside the region is altered, it won't affect the value of $u(x,t)$.
 \end{re}
 
-We can change our perspective by asking, suppose given a starting point $(x_0,0)$, \textbf{for which point $(x,t)$ where the value of $u(x,t)$ will be affected by the given point}. Clearly, many points will be affected, and these points are exactly the points within the shaded region in the following diagram:
+We can change our perspective by asking
+\begin{quote}
+    Suppose given a starting point $(x_0,0)$, for which point $(x,t)$ where the value of $u(x,t)$ will be affected by the given point?
+\end{quote}
+Clearly, many points will be affected, and these points are exactly the points within the shaded region in the following diagram:
 \begin{center}
     \includegraphics[scale = 0.5]{region of influence.png}
 \end{center}
@@ -174,7 +178,7 @@ We can change our perspective by asking, suppose given a starting point $(x_0,0)
 
     So, we first obtain 
     \[E'(t) = \int_{-\infty}^\infty (\rho u_t u_{tt} + T u_x u_{xt})\ dx\]
-    Note that the wave equation gives $u_{tt} = c^2 u_{xx}$, where expanding out $c$ we see that $\rho u_{tt} = T u_{xx}$. Substituting we get 
+    Note that the wave equation gives $u_{tt} = c^2 u_{xx}$, where expanding out $c=\sqrt{\frac{T}{\rho}}$ we see that $\rho u_{tt} = T u_{xx}$. Substituting we get 
     \[E'(t) = \int_{-\infty}^\infty (T u_t u_{xx} + T u_x u_{xt})\ dx = T\int_{-\infty}^\infty (u_t u_{xx} + u_x u_{xt})\ dx\]
     Note that $u_t u_{xx} + u_x u_{xt} = \diffp{}{x}(u_tu_x)$, again substituting we get 
     \[E'(t) = T\int_{-\infty}^\infty \diffp{}{x}(u_tu_x)\ dx\]
@@ -194,3 +198,122 @@ The above can be summarized as follow:
     In addition, suppose given IVP $u(x,0) = \phi(x)$ and $u_t(x,0)=\psi(x)$, then 
     \[E(t) = E(0) = \frac{1}{2}\int_{-\infty}^\infty \br{\rho\psi^2(x) + T(\phi'(x))^2}\ dx\]
 \end{thm}
+
+\subsection{The Diffusion Equation}
+
+The goal here is to solve the diffusion equation:
+\[u_t = ku_{xx}\]
+and obtain a solution formula, depending on the given initial data $u(x,0) = \phi(x)$. This is more difficult to solve comparing to the wave equation. The strategy is as follow:
+\begin{enumerate}
+    \item Show the uniqueness of the solution.
+    \item Construct a solution to the problem.
+\end{enumerate}
+We first give a theorem without proof:
+
+\medskip 
+
+\begin{thm} [Weak Maximum Principle]
+    If $u(x,t)$ satisfies the diffusion equation $u_t = ku_{xx}$ in a rectangle $D = \sbr{(x,t): 0\leq x\leq \ell,\ 0\leq t\leq T}$ in space-time, then the maximum value of $u(x,t)$ is achieved either initially at $t=0$, or on the lateral sides, i.e. $x=0$ or $x= \ell$.
+\end{thm}
+In other words, denote the union of the left, bottom, and right boundaries as:
+\[\Gamma:= \sbr{(x,0):0\leq x\leq \ell}\cup \sbr{(0,t):0\leq t\leq T} \cup \sbr{(\ell,t):0\leq t\leq T}\]
+Then 
+\[\max_{(x,t)\in \Gamma} u(x,t) = \max_{(x,t)\in D} u(x,t)\]
+The notation of $\Gamma$ is used in the later proof as well. In $x-t$ coordinate system, the union $\Gamma$ of boundaries looks like this:
+\begin{center}
+    \includegraphics[scale = 0.3]{max principle.png}
+\end{center}
+
+\medskip 
+
+\begin{re} \hfill
+    \begin{enumerate}
+        \item The Strong Maximum Principle says that, the maximum \textit{can and only can} achieved at $\Gamma$.
+        \item Note that Maximum Principle also implies Minimum Principle by applying it to the function $-u(x,t)$ by noting that $(-u)_t = k(-u)_{xx}$ and utilize the identity
+        \[\min \sbr{u(x,t)} = - \max \sbr{-u(x,t)}\]
+        \item From physical perspective, if applying to heat equation, the principle says that: 
+        \begin{quote}
+            The highest temperature in the interior body cannot exceed the highest initial temperature, or the highest temperature on the boundary.
+        \end{quote}
+    \end{enumerate}
+\end{re}
+
+We now show the uniqueness:
+
+\medskip
+
+\begin{thm} [Uniqueness of Dirichlet Problem for Diffusion Equation]
+    Consider the diffusion equation with Dirichlet boundary conditions:
+    \[\begin{cases}
+        u_t - ku_{xx} &= f(x,t)\ , 0<x<\ell, t>0\\
+        u(x,0) &= \phi(x)\ \ \ , 0<x<\ell\\
+        u(0,t) &= g(t) \ \ \ \ , u(\ell,t) = h(t)
+    \end{cases}\]
+    where $f,\phi,g,h$ are given functions. Then the above equation has unique solution.
+\end{thm} 
+
+\begin{proof} [Proof using Maximum Principle]
+    Suppose that there are two solutions $u_1(x,t)$ and $u_2(x,t)$. Let $w:=u_1 - u_2$, then $w$ satisfies the homogenours equation with zero initial-boundary conditions:
+    \begin{equation} \label{eqn: proof max principle}
+        \begin{cases}
+        w_t - kw_{xx} &= 0 \quad , 0<x<\ell, t>0\\
+        w(x,0) &= 0 \quad , 0<x<\ell\\
+        w(0,t) &= 0 \quad, w(\ell,t) = 0
+        \end{cases}
+    \end{equation}
+    For any $T>0$, define the rectangle $D = \sbr{(x,t):0\leq x\leq \ell, 0\leq t\leq T}$. Since $w$ satisfeis the diffusion equation in the defined rectangle $D$, by Maximum Principle we see that 
+    \[w(x,t) \leq \max_{(x',t')\in \Gamma} w(x',t')\quad \forall(x,t)\in D\]
+    Note that for any $(x',t')\in \Gamma$ it takes the form of $(x',0)$, $(0,t')$, or $(\ell,T)$, which by Equation (\ref{eqn: proof max principle}) we see that $w(x',t')=0$ regardless of which form. Together, we see that 
+    \[w(x,t)\leq 0\quad \forall(x,t)\in D\]
+    Similarly, we can show using Minimum Principle that 
+    \[w(x,t) \geq \min_{(x',t')\in \Gamma} w(x',t') =0 \quad \forall (x,t)\in D\]
+    This shows that $u_1(x,t)-u_2(x,t) = w(x,t) = 0$, implying that $u_1 (x,t) = u_2(x,t)$ for all $0<x<\ell$ and all $t>0$. Thus the solution is unique.
+\end{proof}
+
+\begin{proof} [Proof using Energy Method]
+    Suppose that there are two solutions $u_1(x,t)$ and $u_2(x,t)$. Let $w:=u_1 - u_2$, then $w$ satisfies the homogenours equation with zero initial-boundary conditions:
+    \begin{equation} \label{eqn: proof max principle}
+        \begin{cases}
+        w_t - kw_{xx} &= 0 \quad , 0<x<\ell, t>0\\
+        w(x,0) &= 0 \quad , 0<x<\ell\\
+        w(0,t) &= 0 \quad, w(\ell,t) = 0
+        \end{cases}
+    \end{equation}
+    The energy of $w$ at time $t$ is defined as 
+    \[E[w](t) = \frac{1}{2}\int_0^\ell [w(x,t)]^2\ dx\]
+    which is non-negative. Note that the initial condition $w(x,0)=0$ implies $E[w](0)=0$. Differentiating the energy w.r.t. time $t$, we get 
+    \[\diff{E}{t} = \int_0^\ell ww_t\ dx\]
+    Note diffusion equation says $w_t = kw_{xx}$, substituting we get 
+    \[\diff{E}{t} = k\int_0^\ell ww_{xx}\ dx\]
+    We can rewrite the integrand by noticing $ww_{xx} = \diffp{}{x}(ww_x)-w_x^2$, and deriving it to get:
+    \begin{align*}
+        \diff{E}{t} &= k\int_0^\ell ww_{xx}\ dx \\
+        &= \int_0^\ell k\br{\diffp{}{x}(ww_x)-w_x^2}\ dx \\
+        &=k[w(x,t)w_x(x,t)]^{x=\ell}_{x=0} - \int_{0}^{\ell}w_x^2 dx\\
+        &\leq k[w(x,t)w_x(x,t)]^{x=\ell}_{x=0}
+    \end{align*}
+    where the last inequality is obtained by noting that $\int_{0}^{\ell}w_x^2$ is non-negative. Lastly, since $w(0,t)=0$ ad $w(\ell,t)=0$, thus $k[w(x,t)w_x(x,t)]^{x=\ell}_{x=0}=0$. Together we have 
+    \[\diff{E}{t}\leq 0\]
+    This shows that $E[w](t)$ is a decreasing quantity. By the definition of decreasing, for all $t$ we have 
+    \[0\leq E[w](t) \leq E[w](0) = 0\]
+    which forces that $E[w](t) = 0$. By definition of $E$, it implies that $w=0$ and thus $u_1 = u_2$. Therefore the solution is unique.
+\end{proof}
+
+\medskip 
+
+\begin{ex}
+    Consider the diffusion equation $u_t = u_xx$ with $(x,t)\in D:= \sbr{(x,t):0<x<\ell, t>0}$ with boundary conditions:
+    \[u(0,t)=u(\ell,t)=0 \quad \text{and} \quad u(x,0) = 4x(\ell-x)\]
+    We want to show that $0<u(x,t)<\ell^2$ for all $(x,t)\in D$. By Maximum Principle, the maximum of $u$ appears at the boundary $\Gamma$. The given condition $u(0,t) = u(\ell,t)=0$ implies that the maximum does not occur on the lateral sides, since $u(x,0)=4x(\ell-x)$ is greater than $0$ at some $x$. It is easy to justify that the maximum of $4x(\ell-x)$ occurs at $x=\ell/2$, where $u(\ell/2,0)=\ell^2$. Therefore by Maximum Principle we have $u(x,t)<\ell^2$ for all $(x,t)\in D$. 
+    
+    On the other hand, by Minimum Principle, the minimum of $u(x,t)$ must be achieved in $\Gamma$. Since $0\leq x\leq \ell$ in $\Gamma$, so $u(x,0)=4x(\ell-x)>0$. But $u(0,t)=u(\ell,t)=0$, thus $0$ is the minimum value by Minimum Principle. Together $u(x,t)>0$ for all $(x,t)\in D$.
+
+    Next, we use the energy method to show that $\int_0^\ell u^2\ dx$ is a strictly decreasing function of $t$. Define 
+    \[w(t) := \int_0^\ell u^2(x,t)\ dx\]
+    It is equivalent to show that $\diff{}{t} w(t)<0$. Taking derivative w.r.t. $t$ we obtain:
+    \[\diff{w}{t} = \int_{0}^{\ell} 2uu_t\ dx = 2\int_{0}^{\ell} uu_{xx}\ dx\]
+    where the last equality is obatined by performing substitution by the given diffusion equation $u_t = u_xx$. Integration by parts give us:
+    \[\diff{w}{t} = 2[uu_x]_0^\ell - 2\int_0^\ell u_x^2\ dx = - 2\int_0^\ell u_x^2\ dx\]
+    where the last equality is due to the given boundary conditions $u(0,t)=u(\ell,t)=0$. Clealry $- 2\int_0^\ell u_x^2\ dx$ is non-positive. We claim that it is non-zero. If not, then $u_x=0$ implies that $u$ is a constant. Since $u(0,t)=0$, so $u$ is a zero function. But we have shown that $u(x,t)>0$, thus contradiction, implying that the integral is non-zero. Therefore
+    \[\diff{w}{t}=- 2\int_0^\ell u_x^2\ dx <0\]
+\end{ex}

@@ -365,6 +365,11 @@ INPUT ./lightcone.png
 INPUT ./lightcone.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecti0700.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecti0500.tfm
+INPUT ./max principle.png
+INPUT ./max principle.png
+INPUT ./max principle.png
+INPUT ./max principle.png
+INPUT ./max principle.png
 INPUT build/Main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb

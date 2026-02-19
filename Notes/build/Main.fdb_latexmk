@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1770109063.59093 "/Users/weelun/Documents/Y4S2/MH4110 PDE/Notes/Main.tex" "build/Main.pdf" "Main" 1770109064.19693 0
+["pdflatex"] 1771493086.99994 "/Users/weelun/Documents/Y4S2/MH4110 PDE/Notes/Main.tex" "build/Main.pdf" "Main" 1771493087.60808 0
   "/Users/weelun/Documents/Y4S2/MH4110 PDE/Notes/Main.tex" 1770105599.56724 3685 825b526e365dfea3d78bec103e057f60 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -212,13 +212,14 @@
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1757671080 3345740 e4de162bc7f131754d19d115081aa641 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "Chapter 1.tex" 1769431785.49823 23025 0e4c586d14d3fe93d74ee5bd9d859d67 ""
-  "Chapter 2.tex" 1770109063.50934 10565 c69e4af09a491ad18aba588bc9776433 ""
+  "Chapter 2.tex" 1771493086.90534 18099 2209118ec669780ec1a482e0bb0ce693 ""
   "Main.tex" 1770105599.56724 3685 825b526e365dfea3d78bec103e057f60 ""
   "Waves.jpg" 1769418760.64452 75300 e5c28a7318308b620f1e113f6e3e7133 ""
-  "build/Main.aux" 1770109064.12497 5646 1ebfc7a26c606e87cc57f93a6fedac7c "pdflatex"
-  "build/Main.toc" 1770109064.12603 987 841b13fa938f973df0178bf833747cbb "pdflatex"
+  "build/Main.aux" 1771493087.53931 6260 3cba47bcbe60c23fdfff12c953ac18e2 "pdflatex"
+  "build/Main.toc" 1771493087.54058 1076 681d67a6820a52abb7fb3218eca1086a "pdflatex"
   "interval of dependence.png" 1770101115.0397 25124 18592ab41e2a4c2f8b21614d8edbf8e8 ""
   "lightcone.png" 1770104990.37063 7205 5bd5926d7989c0c73a0f675acf6d2103 ""
+  "max principle.png" 1771491433.84872 118693 8411f48d26eb8963af941d527bb92b1b ""
   "region of influence.png" 1770103230.39754 30861 cc8c38aa0602eb1e5a2686a179c0cd49 ""
   (generated)
   "build/Main.aux"
