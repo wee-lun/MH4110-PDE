@@ -1,6 +1,6 @@
-\section{Where PDEs Come From}
+\chapter{Where PDEs Come From}
 
-\subsection{Notations, Definitions, and Basic Concepts}
+\section{Notations, Definitions, and Basic Concepts}
 Throughout the notes we will adapt the following notations and symbol:
 \begin{itemize}
     \item $u_x = \diffp{u}{x} = \partial_x u$
@@ -74,7 +74,7 @@ A PDE can be expressed in the form of $F(x,y, \dots, u, u_x, u_y, \dots, u_{xx},
 
 The upshot of superposition principle is that the solution structure of a PDE is always in the form of \textbf{general solution + particular solution}, where the general solution is obtained simply solving the corresponding homogenous PDE. On the other hand, the particular solution might requires some hardwork to figure out. If the PDE is homogeneous, then the particular solution degenerates into $0$. 
 
-\subsection{First Order Linear Equation}
+\section{First Order Linear Equation}
 Here, we will investigate the first-order linear PDE, which takes the form
 \[a(x,y) u_x + b(x,y) u_y + c(x,y)u = f(x,y)\]
 where $a,b,f$ are continuous functions in some domain $D$. In particular, the two methods to solve such PDE are geometric methods and coordinate methods.
@@ -185,7 +185,7 @@ In general the PDE can be solved as long as the ODE above can be solved.
 In summary, first order linear PDE can be fully solved using the method of characteristic, and combined with geometric method or coefficient method. Say given $P(x,y)u_x + Q(x,y)u_y = R(x,y,u)$, the characteristic equations are
 \[\frac{dx}{P} = \frac{dy}{Q} = \frac{du}{R}\]
 
-\subsection{Flows, Vibrations, and Diffusions}
+\section{Flows, Vibrations, and Diffusions}
 In this part, we introduce some PDEs that describe physical phenomenon. We omit the derivation of most PDEs here. One who is interested can check any standard PDE materials on his own.
 
 Specifically, the three fundamental PDEs of this course are:
@@ -323,7 +323,7 @@ Laplace equation describes diffusions. Think of a room with a heat source, it is
 
 In the case that the above PDEs is inhomogeneous, i.e. $\triangle u = f$ for some non-zero $f$, we called it the \textit{Poisson equation}.
 
-\subsection{Initial and Boundary Conditions}
+\section{Initial and Boundary Conditions}
 
 As in ODE, the solution we get from a PDE actually comprises a whole family of functions that satisfies the given equation. In reality, some conditions are required to single out a solution. These conditions fall into two types: initial conditions and boundary conditions.
 
@@ -343,7 +343,7 @@ On the other hand, \textit{boundary condition} gives a domain $D$ for which the 
 \end{ex}
 In any of the above example, we say the boundary conditions are homogeneous if $g(\mathbf{x},t) = 0$, and inhomogeneous otherwise.
 
-\subsection{Well-posedness of a PDE}
+\section{Well-posedness of a PDE}
 Suppose given a PDE in a domain $D$ with a set of initial and/or boundary conditions. We say it is well-posed if all the following are met:
 \begin{enumerate}
     \item (Existence) There exists at least one solution.
@@ -352,7 +352,7 @@ Suppose given a PDE in a domain $D$ with a set of initial and/or boundary condit
 \end{enumerate}
 Well-posedness is an important property to have if one is using PDE to study the actual world. In particular, existence and uniqueness ensures that the model(PDE) is reliable, and stability gives basic control of the system due to continuous dependence.
 
-\subsection{Types of Second-Order Equations}
+\section{Types of Second-Order Equations}
 We have investigated first-order linear PDE in the previous section, where we demonstrate how it can be reduced to an ODE problem via the method of characteristic curves. We now study second-order linear PDE. We will only go through the types of PDEs in this part, and the solution of each PDE will be presented in the next chapter.
 
 \medskip 

@@ -1,12 +1,12 @@
-\contentsline {section}{\numberline {0}Preface and Disclaimer}{2}{section.0}%
-\contentsline {section}{\numberline {1}Where PDEs Come From}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Notations, Definitions, and Basic Concepts}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}First Order Linear Equation}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Flows, Vibrations, and Diffusions}{6}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Initial and Boundary Conditions}{9}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Well-posedness of a PDE}{10}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Types of Second-Order Equations}{10}{subsection.1.6}%
-\contentsline {section}{\numberline {2}Waves and Diffusions}{12}{section.2}%
-\contentsline {subsection}{\numberline {2.1}The Wave Equation}{12}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Causality and Energy}{14}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}The Diffusion Equation}{16}{subsection.2.3}%
+\contentsline {chapter}{\numberline {1}Where PDEs Come From}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Notations, Definitions, and Basic Concepts}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}First Order Linear Equation}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Flows, Vibrations, and Diffusions}{9}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Initial and Boundary Conditions}{11}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Well-posedness of a PDE}{12}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Types of Second-Order Equations}{12}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Waves and Diffusions}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}The Wave Equation}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Causality and Energy}{17}{section.2.2}%
+\contentsline {section}{\numberline {2.3}The Diffusion Equation}{19}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Comparison of Waves and Diffusions}{27}{section.2.4}%

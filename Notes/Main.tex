@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{book}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%% Packages %%%%%%%%%%%%
@@ -16,7 +16,7 @@
 \usepackage{mathtools, extpfeil}
 
 % for better cross-reference workflow
-\usepackage{showlabels}
+%\usepackage{showlabels}
 \usepackage[bookmarks=True]{hyperref}
 \usepackage{bookmark}
 \renewcommand{\arraystretch}{1.5}
@@ -39,7 +39,7 @@
 %%%%%%%%%%%% Environment %%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{pro}[thm]{Proposition}
@@ -57,11 +57,13 @@
 \newcommand{\R}{{\mathbb R}}
 \newcommand{\N}{{\mathbb N}}
 \newcommand{\Q}{{\mathbb Q}}
+\newcommand{\qand}{\quad \text{and} \quad}
 
 \newcommand{\grad}{\operatorname{grad}}
 \newcommand{\curl}{\operatorname{curl}}
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\dist}{\operatorname{dist}}
+\newcommand{\erf}{\operatorname{Erf}}
 
 \renewcommand{\div}{\operatorname{div}}
 \renewcommand{\i}{\mathbf{i}}
@@ -123,8 +125,9 @@
 \tableofcontents
 
 \newpage
-\setcounter{section}{-1}
-\section{Preface and Disclaimer}
+\textbf{Preface and Disclaimer}
+
+
 This note is written by me, a student who taken the course MH4110: Partial Differential Equations under Prof. Tong Ping during academic year 25/26 at the School of Physical and Mathematical Sciences of Nanyang Technological University in Singapore. 
 
 I hereby disclaim that the contents of this note are intended solely for my personal use and are not originally produced by me, except for the presentation of the definitions and the written proofs. I do not take responsibility for any grammatical or mathematical errors in this note. The note may be incomplete, and once the course is finished, I will no longer update it for any reason.

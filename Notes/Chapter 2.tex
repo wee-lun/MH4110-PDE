@@ -1,6 +1,5 @@
-\newpage
-\section{Waves and Diffusions}
-\subsection{The Wave Equation}
+\chapter{Waves and Diffusions}
+\section{The Wave Equation}
 
 We have defined wave equation is the previous chapter. Note that if we take the wave equation on $\R$, it takes the form of 
 \[u_{tt} = c^2 u_{xx}\]
@@ -104,7 +103,7 @@ This is the solution formula for the IVP of wave equation. In particular, the se
     \[u(x,t) = \frac{1}{2}[\phi(x+c(t-t_0)) + \phi(x-c(t-t_0))] + \frac{1}{2c}\int_{x-c(t-t_0)}^{x+c(t-t_0)}\psi(s) ds\]
 \end{re}
 
-\subsection{Causality and Energy}
+\section{Causality and Energy}
 We have discussed d'Alambert formula previously. Note that $u(x,t)$ depends on the values of $\phi$ and $\psi$. In particular, the value $u(x,t)$ is affected by the following:
 \begin{itemize}
     \item value of $\phi$ at point $(x-ct,0)$
@@ -199,7 +198,7 @@ The above can be summarized as follow:
     \[E(t) = E(0) = \frac{1}{2}\int_{-\infty}^\infty \br{\rho\psi^2(x) + T(\phi'(x))^2}\ dx\]
 \end{thm}
 
-\subsection{The Diffusion Equation}
+\section{The Diffusion Equation}
 
 The goal here is to solve the diffusion equation:
 \[u_t = ku_{xx}\]
@@ -272,7 +271,7 @@ We now show the uniqueness:
 
 \begin{proof} [Proof using Energy Method]
     Suppose that there are two solutions $u_1(x,t)$ and $u_2(x,t)$. Let $w:=u_1 - u_2$, then $w$ satisfies the homogenous equation with zero initial-boundary conditions:
-    \begin{equation} \label{eqn: proof max principle}
+    \begin{equation}
         \begin{cases}
         w_t - kw_{xx} &= 0 \quad , 0<x<\ell, t>0\\
         w(x,0) &= 0 \quad , 0<x<\ell\\
@@ -378,7 +377,7 @@ Then we build the solution for general $\phi(x)$ from this particular one. Befor
 
 \medskip 
 
-\begin{thm} [Solution formula for the diffusion equation]
+\begin{thm} [Solution formula for the diffusion equation] \label{thm: soln diff eqn}
     The problem 
     \[\begin{cases}
     u_t &= ku_{xx},\ x\in \R,\ t>0\\
@@ -450,9 +449,17 @@ Then we build the solution for general $\phi(x)$ from this particular one. Befor
     where in the last line we use our assumption that $\phi(-\infty)=0$. This shows that the solution $u(x,t)$ satisfies the initial condition, thus solves the IVP.
 \end{proof}
 
-Notably, the function 
-\[S(x,t) = \frac{1}{\sqrt{4k\pi t}} \exp\br{-\frac{x^2}{4kt}}\]
-is known as \textit{Gaussian kernel, fundamental solution, source function, Green's function,} or \textit{propagator} of the heat equation. Essentially, the solution $u(x,t)$ is essentially a convolution of $S(x,t)$ with the initial value $\phi(x)$, which can be seen as a \textit{weighting function} that 'distribute' $\phi(y)$:
+Due to the wide usage of the function $S(x,t)$, we shall formally define it: 
+
+\medskip
+
+\begin{defn} [Gaussian kernel]
+    The function 
+    \[S(x,t) = \frac{1}{\sqrt{4k\pi t}} \exp\br{-\frac{x^2}{4kt}}\]
+    is known as \textit{Gaussian kernel, fundamental solution, source function, Green's function,} or \textit{propagator} of the heat equation.
+\end{defn}
+
+ Essentially, the solution $u(x,t)$ is essentially a convolution of $S(x,t)$ with the initial value $\phi(x)$, which can be seen as a \textit{weighting function} that 'distribute' $\phi(y)$:
 \[u(x,t) = \int_{-\infty}^{\infty} S(x-y,t)\phi(y)\ dy \simeq \sum_{j}S(x-y_j,t)\phi(y_j)\triangle y_j\]
 where $\sbr{y_j}$ are some sampling points. This can be interpretated as follow:
 \begin{quote}
@@ -481,6 +488,59 @@ where $\sbr{y_j}$ are some sampling points. This can be interpretated as follow:
                     u(x,0) = \delta(x)
                 \end{cases}\]
                 where $\delta$ is the Dirac delta function. This follows from the fact that $Q$ solves the IVP where $u(x,0)=H(x)$, thus $S(x,0) = Q_x(x,0) = H'(x) = \delta(x)$.
+        \item Regardless of the smoothness of the initial condition $\phi(x)$, the solution $u(x,t)$ is sufficiently smooth for $t>0$ and any $x$, since all partial derivatives of $u$ exists.
     \end{itemize}
 \end{re}
 Together, we know when $t$ is small, the source function $S(x,t)$ is a spike that the formula exaggerates the value of $\phi$ near $x$. Thus as $t$ increases, the function $S(x,t)$ will spread out the initial value $\phi(x)$. This makes sense in the setting of trasfer of heat: as time increases, the heat is transfered and slowly became homogenous throughout the whole body.
+
+It is usually impossible to evaluate the solution $u(x,t)$ completely in terms of elementary functions. However, for some particular initial data $\phi(x)$, the solutions are expressible in terms of the \textit{error function}. 
+
+\medskip 
+
+\begin{defn} [Error function]
+    The error function is defined to be 
+    \[\erf(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-p^2}\ dp\]
+\end{defn}
+
+A direct computataion tells that $\erf(0)=0$, and 
+\[\lim_{x\to \infty} \erf(x) = \frac{2}{\sqrt{\pi}}  \int_0^\infty e^{-p^2}\ dp =\frac{2}{\sqrt{\pi}} \frac{\sqrt{\pi}}{2}= 1\]
+We have in fact seen the error function previously. Recall that in the proof of Theorem \ref{thm: soln diff eqn}, we defined 
+\[Q(x,t) = \frac{1}{2} + \frac{1}{\sqrt{\pi}}\int_0^{x/\sqrt{4kt}} e^{-s^2}\ dx\]
+In fact we can write it as 
+\[Q(x,t) = \frac{1}{2} + \frac{1}{2} \func{\erf}{\frac{x}{\sqrt{4kt}}}\]
+
+\medskip 
+
+\begin{ex}
+    Consider the IVP
+    \[\begin{cases}
+        u_t = ku_{xx},\ x\in \R\\
+        u(x,0) = \phi(x) = \begin{cases}
+            100&,\ x>0\\
+            0 &,\ x<0
+        \end{cases}
+    \end{cases}\]
+    We will evaluate its solution using the error function. By the solution formula we have 
+    \begin{align*}
+        u(x,t) 
+        &= \frac{1}{\sqrt{4k\pi t}} \int_0^\infty \func{\exp}{-\frac{(x-y)^2}{4kt}}\ dy \\
+        &= \frac{100}{\sqrt{\pi}} \int_{-x/\sqrt{4kt}}^\infty e^{-q^2}\ dq \quad \text{where we substitue } q:= \frac{y-x}{\sqrt{4kt}}\\
+        &= \frac{100}{\sqrt{\pi}} \int_{0}^\infty e^{-q^2}\ dq + \frac{100}{\sqrt{\pi}} \int_{-x/\sqrt{4kt}}^0 e^{-q^2}\ dq \\
+        &= \frac{100}{\sqrt{\pi}} \frac{\sqrt{\pi}}{2} + \frac{100}{\sqrt{\pi}} \int^{x/\sqrt{4kt}}_0 e^{-q^2}\ dq \\
+        &= 50 + 50\func{\erf}{\frac{x}{\sqrt{4kt}}}
+    \end{align*}
+    where the second last equality is utilizing the fact that $e^{-q^2}$ is an even function.
+\end{ex}
+
+\section{Comparison of Waves and Diffusions}
+We have learned that waves are essentially transporting the initial data in both directions at a finite speed. On the other hand, diffusions are spreading the initial datas in a smooth fashion and gradually disapper. Also, for wave equation, the energy is preserved as a constant, while in diffusion equation the energy decays to zero. They are also different from the perspective of well-posedness: wave equation is well-posed for all $t$, but diffusion equation is not for $t<0$. 
+
+We end this chapter with an example demonstrating that Maximum Principle does not hold for the wave equation:
+\begin{ex}
+    Consider the wave equation $u_{tt} = u_{xx}$ with initial condition 
+    \[u(x,0) = 0 \qand u_t(x,0)=\psi(x) = \begin{cases}
+        1,|x|<1\\
+        0,|x|>1
+    \end{cases}\]
+    Suppose that the Maximum Principle holds for wave equation. Since in this case there is no lateral boundary, by the principle the maximum must be attained at $t=0$. However, when $t=0$, the initial condition gives $u(x,0)=0$, and based on d'Alembert formula the solution is positive for $t>0$. This shows that maximum principle does not hold for wave equation. 
+\end{ex}
