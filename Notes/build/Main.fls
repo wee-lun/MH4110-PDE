@@ -370,6 +370,11 @@ INPUT ./max principle.png
 INPUT ./max principle.png
 INPUT ./max principle.png
 INPUT ./max principle.png
+INPUT ./Gaussian kernel.png
+INPUT ./Gaussian kernel.png
+INPUT ./Gaussian kernel.png
+INPUT ./Gaussian kernel.png
+INPUT ./Gaussian kernel.png
 INPUT build/Main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
