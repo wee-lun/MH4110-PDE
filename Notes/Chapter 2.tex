@@ -459,7 +459,15 @@ Due to the wide usage of the function $S(x,t)$, we shall formally define it:
     is known as \textit{Gaussian kernel, fundamental solution, source function, Green's function,} or \textit{propagator} of the heat equation.
 \end{defn}
 
- Essentially, the solution $u(x,t)$ is essentially a convolution of $S(x,t)$ with the initial value $\phi(x)$, which can be seen as a \textit{weighting function} that 'distribute' $\phi(y)$:
+It is direct to spot the following statement:
+
+\medskip 
+
+\begin{pro} [Evenness and Positivity of Gaussian kernel]
+    Gaussian kernel $S(x,t)$ is an even function of $x$, and it is always positive.
+\end{pro}
+
+Essentially, the solution $u(x,t)$ is essentially a convolution of $S(x,t)$ with the initial value $\phi(x)$, which can be seen as a \textit{weighting function} that 'distribute' $\phi(y)$:
 \[u(x,t) = \int_{-\infty}^{\infty} S(x-y,t)\phi(y)\ dy \simeq \sum_{j}S(x-y_j,t)\phi(y_j)\triangle y_j\]
 where $\sbr{y_j}$ are some sampling points. This can be interpretated as follow:
 \begin{quote}
@@ -471,7 +479,6 @@ where $\sbr{y_j}$ are some sampling points. This can be interpretated as follow:
 \begin{re} \hfill
     \begin{itemize}
         \item  The name 'propagator' can be understood as propagating the initial data to the later time, giving the solution at any time $t>0$.
-        \item Gaussian kernel $S(x,t)$ is an even function of $x$, and it is always positive.
         \item When $t$ is large, $S(x,t)$ is very spread out; it is a thin tall spike of height $\frac{1}{\sqrt{4k\pi t}}$ when $t$ is small. 
         \begin{center}
             \includegraphics[scale=0.25]{Gaussian kernel.png}
