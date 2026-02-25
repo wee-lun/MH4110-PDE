@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.12)  22 FEB 2026 16:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.12)  25 FEB 2026 09:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -562,7 +562,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen291
 \Gm@layoutvoffset=\dimen292
 \Gm@dimlist=\toks45
-) (build/Main.aux)
+) (build/Main.aux (build/Chapter 1.aux) (build/Chapter 2.aux) (build/Chapter 3.aux))
 \openout1 = `Main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
@@ -666,11 +666,15 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 2.
 
 [3]
 
-[4] (./Chapter 1.tex
+[4]
+\openout2 = `"Chapter 1.aux"'.
+
+ (./Chapter 1.tex
 Chapter 1.
 
 
 [5
+
 
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
@@ -679,7 +683,7 @@ Chapter 1.
 [7]
 
 [8]
-<Waves.jpg, id=102, 1007.765pt x 348.30125pt>
+<Waves.jpg, id=108, 1007.765pt x 348.30125pt>
 File: Waves.jpg Graphic file (type jpg)
 <use Waves.jpg>
 Package pdftex.def Info: Waves.jpg  used on input line 239.
@@ -692,11 +696,17 @@ Package pdftex.def Info: Waves.jpg  used on input line 239.
 
 [11]
 
-[12]) (./Chapter 2.tex
+[12])
 
 [13]
+\openout2 = `"Chapter 2.aux"'.
+
+ (./Chapter 2.tex
 
 [14
+
+
+
 
 ]
 Chapter 2.
@@ -705,36 +715,36 @@ Chapter 2.
 [15]
 
 [16]
-<interval of dependence.png, id=162, 617.30624pt x 220.825pt>
+<interval of dependence.png, id=168, 617.30624pt x 220.825pt>
 File: interval of dependence.png Graphic file (type png)
 <use interval of dependence.png>
-Package pdftex.def Info: interval of dependence.png  used on input line 122.
+Package pdftex.def Info: interval of dependence.png  used on input line 124.
 (pdftex.def)             Requested size: 308.65236pt x 110.41222pt.
-<region of influence.png, id=164, 617.30624pt x 208.78pt>
-File: region of influence.png Graphic file (type png)
-<use region of influence.png>
-Package pdftex.def Info: region of influence.png  used on input line 137.
-(pdftex.def)             Requested size: 308.65236pt x 104.38972pt.
 
 
 [17 <./interval of dependence.png>]
-<lightcone.png, id=174, 214.8025pt x 236.885pt>
+<region of influence.png, id=179, 617.30624pt x 208.78pt>
+File: region of influence.png Graphic file (type png)
+<use region of influence.png>
+Package pdftex.def Info: region of influence.png  used on input line 139.
+(pdftex.def)             Requested size: 308.65236pt x 104.38972pt.
+<lightcone.png, id=180, 214.8025pt x 236.885pt>
 File: lightcone.png Graphic file (type png)
 <use lightcone.png>
-Package pdftex.def Info: lightcone.png  used on input line 160.
+Package pdftex.def Info: lightcone.png  used on input line 162.
 (pdftex.def)             Requested size: 107.40099pt x 118.4422pt.
 
-Overfull \hbox (32.22166pt too wide) in paragraph at lines 140--162
+Overfull \hbox (32.22166pt too wide) in paragraph at lines 142--164
 [][] [] 
  []
 
 
 
 [18 <./region of influence.png> <./lightcone.png>]
-<max principle.png, id=185, 685.56125pt x 419.5675pt>
+<max principle.png, id=191, 685.56125pt x 419.5675pt>
 File: max principle.png Graphic file (type png)
 <use max principle.png>
-Package pdftex.def Info: max principle.png  used on input line 223.
+Package pdftex.def Info: max principle.png  used on input line 225.
 (pdftex.def)             Requested size: 205.66995pt x 125.87122pt.
 
 
@@ -749,36 +759,76 @@ Package pdftex.def Info: max principle.png  used on input line 223.
 [23]
 
 [24]
-<Gaussian kernel.png, id=238, 716.6775pt x 668.4975pt>
+
+[25]
+<Gaussian kernel.png, id=268, 716.6775pt x 668.4975pt>
 File: Gaussian kernel.png Graphic file (type png)
 <use Gaussian kernel.png>
-Package pdftex.def Info: Gaussian kernel.png  used on input line 484.
+Package pdftex.def Info: Gaussian kernel.png  used on input line 512.
 (pdftex.def)             Requested size: 179.16893pt x 167.12396pt.
 
 
-[25]
+[26 <./Gaussian kernel.png>]
 
-[26 <./Gaussian kernel.png>])
+[27])
 
-[27] (build/Main.aux)
+[28]
+\openout2 = `"Chapter 3.aux"'.
+
+ (./Chapter 3.tex
+Chapter 3.
+
+
+[29
+
+
+
+
+]
+Overfull \hbox (2.98314pt too wide) in paragraph at lines 86--87
+[][]\T1/cmr/bx/n/10 Definition 3.1.5 \T1/cmr/m/n/10 (IBVP with Neu-mann Bound-ary Con-di-tion of dif-fu-sion equa-tion)\T1/cmr/bx/n/10 . []\T1/cmr/m/n/10 The ini-tial/boundary
+ []
+
+
+
+[30]
+
+[31]
+
+[32]
+<Reflection of waves.png, id=321, 1073.00874pt x 464.73625pt>
+File: Reflection of waves.png Graphic file (type png)
+<use Reflection of waves.png>
+Package pdftex.def Info: Reflection of waves.png  used on input line 225.
+(pdftex.def)             Requested size: 429.19589pt x 185.8912pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[33]
+
+[34 <./Reflection of waves.png>])
+
+[35] (build/Main.aux (build/Chapter 1.aux) (build/Chapter 2.aux) (build/Chapter 3.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 24891 strings out of 473190
- 476741 string characters out of 5715800
- 855405 words of memory out of 5000000
- 47565 multiletter control sequences out of 15000+600000
+ 24991 strings out of 473190
+ 478902 string characters out of 5715800
+ 858718 words of memory out of 5000000
+ 47625 multiletter control sequences out of 15000+600000
  573677 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,111p,719b,755s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,15n,111p,725b,717s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsl1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on build/Main.pdf (27 pages, 684433 bytes).
+Output written on build/Main.pdf (35 pages, 831716 bytes).
 PDF statistics:
- 419 PDF objects out of 1000 (max. 8388607)
- 330 compressed objects within 4 object streams
- 113 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 397 compressed objects within 4 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

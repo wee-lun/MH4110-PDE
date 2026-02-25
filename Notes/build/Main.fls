@@ -278,6 +278,15 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT build/Main.aux
 INPUT build/Main.aux
 INPUT build/Main.aux
+INPUT build/Chapter 1.aux
+INPUT build/Chapter 1.aux
+INPUT build/Chapter 1.aux
+INPUT build/Chapter 2.aux
+INPUT build/Chapter 2.aux
+INPUT build/Chapter 2.aux
+INPUT build/Chapter 3.aux
+INPUT build/Chapter 3.aux
+INPUT build/Chapter 3.aux
 OUTPUT build/Main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -322,7 +331,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary5.tfm
 OUTPUT build/Main.toc
 INPUT ./Chapter 1.tex
-INPUT ./Chapter 1.tex
+OUTPUT build/Chapter 1.aux
 INPUT ./Chapter 1.tex
 INPUT ./Chapter 1.tex
 INPUT Chapter 1.tex
@@ -342,7 +351,7 @@ INPUT ./Waves.jpg
 INPUT ./Waves.jpg
 INPUT ./Waves.jpg
 INPUT ./Chapter 2.tex
-INPUT ./Chapter 2.tex
+OUTPUT build/Chapter 2.aux
 INPUT ./Chapter 2.tex
 INPUT ./Chapter 2.tex
 INPUT Chapter 2.tex
@@ -373,7 +382,26 @@ INPUT ./Gaussian kernel.png
 INPUT ./Gaussian kernel.png
 INPUT ./Gaussian kernel.png
 INPUT ./Gaussian kernel.png
+INPUT ./Chapter 3.tex
+OUTPUT build/Chapter 3.aux
+INPUT ./Chapter 3.tex
+INPUT ./Chapter 3.tex
+INPUT Chapter 3.tex
+INPUT ./Reflection of waves.png
+INPUT ./Reflection of waves.png
+INPUT ./Reflection of waves.png
+INPUT ./Reflection of waves.png
+INPUT ./Reflection of waves.png
 INPUT build/Main.aux
+INPUT build/Chapter 1.aux
+INPUT build/Chapter 1.aux
+INPUT build/Chapter 1.aux
+INPUT build/Chapter 2.aux
+INPUT build/Chapter 2.aux
+INPUT build/Chapter 2.aux
+INPUT build/Chapter 3.aux
+INPUT build/Chapter 3.aux
+INPUT build/Chapter 3.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

@@ -1,0 +1,300 @@
+\chapter{Reflection and Sources}
+
+In this chapter, we will be solving diffusion equations and wave equations on the half-line $\R^+$. 
+\section{Diffusion on the Half-Line}
+
+We first define a specific type of diffusion problem on the half-line:
+
+\medskip 
+
+\begin{defn} [IBVP with Dirichlet Boundary Condition of diffusion equation]
+    The initial/boundary value problem (IBVP) with a Dirichlet boundary condition at the endpoint $x=0$ is given by:
+    \begin{align*}
+        \begin{cases}
+            v_t = k v_{xx}, & x\in\R^+, t > 0 \\
+            v(0,t) = 0, & t > 0 \\
+            v(x,0) = \phi(x), & x > 0
+        \end{cases}
+    \end{align*}
+    where we assume $\phi(0)=0$.
+\end{defn}
+
+Here $v(x,0)=\phi(x)$ is called the initial condition, $v(0,t)=0$ is called the boundary condition, and $\phi(0)=0$ is called the consistent condition. Note that if a solution exists, it is unique by the Maximum Principle.
+
+\medskip 
+
+\begin{re} [Physical interpretation of IBVP with Dirichlet Boundary Condition of diffusion equation]
+    The setup for IBVP with Dirichlet Boundary Condidtion of diffusion question can be interpreted as having an infinite rod with the initial temperature given by $\phi(x)$, and the endpoint $x=0$ is kept at zero temperature for all time. The question is to find the temperature distribution $v(x,t)$ for $x > 0$ and $t > 0$. 
+\end{re}
+
+A strategy to solve the above question is to extend the initial condition $\phi$ to the whole line, so that we can use the solution formula for the diffusion equation on the whole line given in Theorem \ref{thm: soln diff eqn}.
+
+\medskip 
+
+\begin{defn} [Odd extension of a function]
+    The odd extension of a function $\phi$ defined on $\R^+$ is given by:
+    \[\psi(x) = 
+        \begin{cases}
+            \phi(x) &, x > 0 \\
+            0 &, x = 0 \\
+            -\phi(-x) &, x < 0
+        \end{cases}\]
+    It is immediate that $\psi(x)$ is an odd function.
+\end{defn}
+
+We can now solve the IBVP with Dirichlet Boundary Condition of diffusion equation by using the odd extension of the initial condition:
+
+\medskip 
+
+\begin{lem}
+    The solution to the IBVP with Dirichlet Boundary Condition of diffusion equation is given by:
+    \[v(x,t) = \frac{1}{\sqrt{4\pi k t}} \int_0^\infty \br{\exp\br{-\frac{(x-y)^2}{4kt}} - \exp\br{-\frac{(x+y)^2}{4kt}}} \phi(y) dy\]
+\end{lem}
+\begin{proof}
+    Let $\psi$ be the odd extension of $\phi$. Consider the Cauchy problem:
+    \[\begin{cases}
+        u_t - ku_{xx} = 0 &,\ x\in \R,\ t>0\\
+        u(x,0) = \psi(x) &,\ x\in \R 
+    \end{cases}\]
+    By Theorem \ref{thm: soln diff eqn}, the solution to the above Cauchy problem is given by:
+    \[u(x,t) = \int_{-\infty}^{\infty} S(x-y,t)\psi(y)\ dy = \frac{1}{\sqrt{4\pi k t}} \int_{-\infty}^\infty \exp\br{-\frac{(x-y)^2}{4kt}} \psi(y)\ dy\]
+    Next, define $v(x,t) = u(x,t)\vert_{x\geq 0}$. We claim that $v$ is the solution to the IBVP with Dirichlet Boundary Condition of diffusion equation. It is clear that $v$ satisfies the diffusion equation on the positive half-line. Moreover, by definition chasing, we see 
+    \[v(x,0)=u(x,0)\vert_{x>0} = \psi(x)\vert_{x>0}=\phi(x)\]
+    This shows that $v$ satisfies the initial condition. Finally, we check the boundary condition. We first check that for any odd function $f$ it must satisfies $f(0)=0$:
+    \begin{quote}
+        if $f$ is odd, then $f(0) = f(-0) = -f(0)$, which implies $f(0)=0$.
+    \end{quote}
+    Recall in Lemma \ref{lem: parity soln diffusion} we have shown that if the initial condition is odd, then the solution to the diffusion equation is also odd. Since $\psi$ is odd, $u$ is also odd by Lemma \ref{lem: parity soln diffusion}. Therefore, we have
+    \[v(0,t) = u(0,t) = 0\]
+    where the last equality follows from the fact that $u$ is an odd function. Lastly, the formula for $v$ can be obtained as follows: first we rewrite $u$ as
+    \begin{align*}
+        u(x,t) &= \int_{-\infty}^{\infty} S(x-y,t)\psi(y)\ dy\\
+        &= \int_{-\infty}^0 S(x-y,t)\psi(y)\ dy + \int_0^\infty S(x-y,t)\psi(y)\ dy\\
+        &= -\int_{-\infty}^0 S(x-y,t)\phi(-y)\ dy + \int_0^\infty S(x-y,t)\phi(y)\ dy \quad \text{since $\psi$ is the odd extension of $\phi$}\\
+        &= -\int_{-\infty}^0 S(x+z,t)\phi(z)\ dz + \int_0^\infty S(x-y,t)\phi(y)\ dy \quad \text{where } z := -y\\
+        &= \int_0^\infty S(x-y,t)\phi(y)\ dy - \int_0^\infty S(x+y,t)\phi(y)\ dy \\
+        &= \int_0^\infty \br{S(x-y,t) - S(x+y,t)} \phi(y)\ dy
+    \end{align*}
+    Restricting to $x> 0$ gives the desired formula for $v$.
+\end{proof}
+
+Here is a different type of diffusion problem on the half-line:
+
+\medskip 
+
+\begin{defn} [IBVP with Neumann Boundary Condition of diffusion equation]
+    The initial/boundary value problem (IBVP) with a Neumann boundary condition at the endpoint $x=0$ is given by:
+    \[\begin{cases}
+        w_t = k w_{xx} &,\ x\in\R^+,\ t > 0 \\
+        w_x(0,t) = 0 &,\ t > 0 \\
+        w(x,0) = \phi(x) &,\ x > 0
+    \end{cases}\]
+\end{defn}
+Again, similarly to the previous case, the above problem must have a unique solution if it exists, by the Maximum Principle. The strategy to solve the above question is also similar: extending the initial data $\phi(x)$ to the entire line, and solve the diffusion equation on the whole line. However, the extension of $\phi$ is different from the previous case:
+
+\medskip
+
+\begin{defn} [Even extension of a function]
+    The even extension of a function $\phi$ defined on $\R^+$ is given by:
+    \[\varphi(x) = \begin{cases}
+        \phi(x) &,\ x\geq0\\
+        \phi(-x) &,\ x\leq 0
+    \end{cases}\]
+\end{defn}
+
+Note that if $\phi(x)$ is an even function, then taking differentiation from the identity $\phi(-x) = \phi(x)$ gives 
+\[-\phi'(-x) = \phi'(x)\]
+This implies that $\phi'$ is an odd function, and thus $\phi'(0)=0$. It is now clear that why an even extension of the initial data $\phi$ is needed instead of an odd extension: we want the solution to satisfy the Neumann boundary condition, which requires that $\phi'(0)=0$.
+
+\medskip 
+
+\begin{lem}
+    The solution to the IBVP with Neumann Boundary Condition of diffusion equation is given by:
+    \[w(x,t) = \frac{1}{\sqrt{4\pi k t}} \int_0^\infty \br{\exp\br{-\frac{(x-y)^2}{4kt}} + \exp\br{-\frac{(x+y)^2}{4kt}}} \phi(y) dy\]
+\end{lem}
+\begin{proof}
+    Let $\varphi$ be the even extension of $\phi$. Consider the Cauchy problem:
+    \[\begin{cases}
+        u_t - ku_{xx} = 0 &,\ x\in \R,\ t>0\\
+        u(x,0) = \varphi(x) &,\ x\in \R 
+    \end{cases}\]
+    By Theorem \ref{thm: soln diff eqn}, the solution to the above Cauchy problem is given by:
+    \[u(x,t) = \int_{-\infty}^{\infty} S(x-y,t)\varphi(y)\ dy = \frac{1}{\sqrt{4\pi k t}} \int_{-\infty}^\infty \exp\br{-\frac{(x-y)^2}{4kt}} \varphi(y)\ dy\]
+    Next, define $v(x,t) = u(x,t)\vert_{x\geq 0}$. We claim that $v$ is the solution to the IBVP with Neumann Boundary Condition of diffusion equation. It is clear that $v$ satisfies the diffusion equation on the positive half-line. Moreover, by definition chasing, we see 
+    \[v(x,0)=u(x,0)\vert_{x>0} = \varphi(x)\vert_{x>0}=\phi(x)\]
+    This shows that $v$ satisfies the initial condition. Finally, we check the boundary condition. Recall in Lemma \ref{lem: parity soln diffusion} we have shown that if the initial condition is even, then the solution to the diffusion equation is also even. Since $\varphi$ is even, $u$ is also even by Lemma \ref{lem: parity soln diffusion}. We have shown previously that if $f$ is an even function, then $f'(0)=0$, thus
+    \[v_x(0,t) = u_x(0,t) =0\]
+    Lastly, the formula for $v$ can be obtained as follows: first we rewrite $u$ as
+    \begin{align*}
+        u(x,t) &= \int_{-\infty}^{\infty} S(x-y,t)\varphi(y)\ dy\\
+        &= \int_{-\infty}^0 S(x-y,t)\varphi(y)\ dy + \int_0^\infty S(x-y,t)\varphi(y)\ dy\\
+        &= \int_{-\infty}^0 S(x-y,t)\phi(-y)\ dy + \int_0^\infty S(x-y,t)\phi(y)\ dy \quad \text{since $\varphi$ is the even extension of $\phi$}\\
+        &= \int_0^{\infty} S(x+z,t)\phi(z)\ dz + \int_0^\infty S(x-y,t)\phi(y)\ dy \quad \text{where } z := -y\\
+        &= \int_0^{\infty} S(x+y,t)\phi(y)\ dy + \int_0^\infty S(x-y,t)\phi(y)\ dy \\
+        &= \int_0^{\infty} \br{S(x+y,t) + S(x-y,t)}\phi(y)\ dy
+    \end{align*}
+    Restricting to $x> 0$ gives the desired formula for $v$.
+\end{proof}
+
+\section{Reflection of Waves}
+
+In this section, we perform a similar analysis for the wave equation on the half-line. We first define the following IBVP for the wave equation:
+
+\medskip 
+
+\begin{defn} [IBVP with Dirichlet Boundary Condition of wave equation]
+    The initial/boundary value problem (IBVP) with a Dirichlet boundary condition at the endpoint $x=0$ is given by:
+    \begin{align*}
+        \begin{cases}
+            v_{tt} = c^2 v_{xx} &,\ x\in\R^+, t > 0 \\
+            v(0,t) = 0 &,\ t > 0 \\
+            v(x,0) = \phi(x) &,\ x > 0 \\
+            v_t(x,0) = \psi(x) &,\ x > 0
+        \end{cases}
+    \end{align*}
+    where we assume $\phi(0)=0$.
+\end{defn}
+
+If the solution exists, then it must be unique by the energy method. Similarly, the strategy is to entend the nitial data $\phi$ and $\psi$ to the whole line, and solve the wave equation on the whole line. We shall consider its odd extension, as we are dealing with the Dirichlet form of the IBVP.
+
+\medskip 
+
+\begin{lem}
+    The solution to the IBVP with Dirichlet Boundary Condition of wave equation is given by:
+    \[v(x,t) = \begin{dcases}
+        \frac{1}{2}\br{\phi(x+ct) + \phi(x-ct)} + \frac{1}{2c} \int_{x-ct}^{x+ct} \psi(s)\ ds &, x > ct\\
+        \frac{1}{2}\br{\phi(x+ct) - \phi(ct-x)} + \frac{1}{2c} \int_{ct-x}^{ct+x} \psi(s)\ ds &, 0< x < ct
+    \end{dcases}\]
+\end{lem}
+\begin{proof}
+    Let $\tilde{\phi}$ and $\tilde{\psi}$ be the odd extensions of $\phi$ and $\psi$ respectively. Consider the Cauchy problem:
+    \[\begin{cases}
+        u_{tt}-c^2u_{xx} = 0 &,\ x\in \R, t>0 \\
+        u(x,0) = \tilde\phi(x) &,\ x\in \R \\
+        u_t(x,0) = \tilde\psi(x) &,\ x\in \R
+    \end{cases}\]
+    We define the restriction of the solution $u(x,t)$ to the positive half-line as
+    \[v(x,t):= u(x,t)\vert_{x\geq 0}\]
+    and we claim that $v$ is the solution to the IBVP with Dirichlet Boundary Condition of wave equation. It is clear that $v$ satisfies the wave equation on the positive half-line.
+    
+    We verify that $v$ satisfies the initial/boundary conditions. First, since $\tilde{\phi}$ and $\tilde{\psi}$ are odd functions, the solution $u$ to the above Cauchy problem is also an odd function, and thus for all $t > 0$ we have 
+    \[u(0,t) = 0\implies v(0,t) = 0\]
+    Next, the initial condition of the Cauchy problem $u(x,0) = \tilde{\phi}(x)$ implies that for all $x > 0$ we have
+    \[v(x,0)=\phi(x)\]
+    Similarly the initial condition of the Cauchy problem $u_t(x,0) = \tilde{\psi}(x)$ implies that for all $x > 0$ we have
+    \[v_t(x,0) = \psi(x)\]
+    This shows that $v$ is indeed the required solution. It remains to derive its formula. By D'Alembert's formula for the Cauchy problem of wave equation, we have that for $x\in \R$ that
+    \[u(x,t) = \frac{1}{2}\br{\func{\tilde\phi}{x+ct} + \func{\tilde\phi}{x-ct}} + \frac{1}{2c} \int_{x-ct}^{x+ct}\func{\tilde\psi}{s}\ ds\]
+    We have to restrict the solution to $x\geq 0$ to derive the formula for $v$. In particular, we have to decide what value of $\tilde\phi$ and $\tilde\psi$ to use, which depends on the sign of $x+ct$ and $x-ct$. First note that in the IBVP we always have $x\geq0$ and $t>0$, since $c> 0$ and thus $x+ct> 0$, thus
+    \[\func{\tilde\phi}{x+ct} = \func{\phi}{x+ct} \quad \text{and} \quad \func{\tilde\psi}{x+ct} = \func{\psi}{x+ct}\]
+    It now remains to determine the sign of $x-ct$. First, if $x-ct > 0$, then we have 
+    \[v(x,t) = \frac{1}{2}\br{\func{\phi}{x+ct} + \func{\phi}{x-ct}} + \frac{1}{2c} \int_{x-ct}^{x+ct}\func{\psi}{s}\ ds\]
+    Next, if $x-ct < 0$, then we have
+    \begin{align*}
+        v(x,t) &= \frac{1}{2}\br{\func{\tilde\phi}{x+ct} + \func{\tilde\phi}{x-ct}} + \frac{1}{2c} \int_{x-ct}^{x+ct}\func{\tilde\psi}{s}\ ds\ \\
+        &= \frac{1}{2}\br{\func{\phi}{x+ct} - \func{\phi}{ct-x}} + \frac{1}{2c} \br{\int_{x-ct}^{0}\func{\tilde\psi}{s}\ ds + \int_{0}^{x+ct}\func{\tilde\psi}{s}\ ds} \\
+        &=  \frac{1}{2}\br{\func{\phi}{x+ct} - \func{\phi}{ct-x}} + \frac{1}{2c} \br{\int_{x-ct}^{0}\func{-\psi}{-s}\ ds + \int_{0}^{x+ct}\func{\psi}{s}\ ds} \\
+        &= \frac{1}{2}\br{\func{\phi}{x+ct} - \func{\phi}{ct-x}} + \frac{1}{2c} \br{\int_{ct-x}^{0}\func{\psi}{y}\ dy + \int_{0}^{x+ct}\func{\psi}{s}\ ds}\ \text{where } y := -s\\
+        &= \frac{1}{2}\br{\func{\phi}{x+ct} - \func{\phi}{ct-x}} + \frac{1}{2c} \int_{ct-x}^{ct+x}\func{\psi}{s}\ ds
+    \end{align*}
+    This completes the proof.
+\end{proof}
+
+When a wave is reflected, it is possible that the reflection of the wave has different sign from the original one. If peaks are reflected to peaks and troughs are reflected to troughs, then both has the same size. On the other hand, if peaks are reflected to troughs and troughs are reflected to peaks, then both has the same size but different sign. 
+
+Also, recall from d'Alambert Formula that on $\R$, every solution is $u(x,t) = F(x-ct) + G(x+ct)$, where $F$ and $G$ are determined by the initial conditions. In particular, $F$ is the right-moving wave and $G$ is the left-moving wave.
+
+\medskip
+
+\begin{re} [Physical Interpretation and the Reflection of waves at the boundary]
+    The setup for IBVP with Dirichlet Boundary Condidtion of wave equation can be interpreted as an infinite string with:
+    \begin{itemize}
+        \item initial displacement given by $\phi(x)$
+        \item initial velocity given by $\psi(x)$
+        \item the endpoint $x=0$ is fixed for all time (this corresponds to $v(0,t) = 0$)
+    \end{itemize}
+    Note that the wave travelling to the left $\phi(x+ct)$ is reflected at the fixed boundary $x=0$, which we have to decide whether the reflection changes the sign of the wave or not. At $x=0$, by the d'Alambert formula we get 
+    \[u(0,t) = F(-ct)+G(ct) = 0\]
+    This implies that $G(ct) = -F(-ct)$, which means that the reflection of the wave changes the sign of the wave. 
+
+    Physically, this implies that if the starting point is close enough to the boundary, the opposite-signed reflected wave can chase up the original waves, and the cancellation occurs due to the opposite signs. Of course, this will not happen if the starting point is far enough from the boundary.
+
+    In particular, we have seen that 'close enough' means $0<x<ct$, and 'far enough' means $x>ct$. Recall $c$ is the speed of the wave, so the wave has travelled a distance of $ct$ after time $t$.
+
+    \begin{center}
+        \includegraphics[scale=0.4]{Reflection of waves.png}
+    \end{center}
+\end{re}
+
+\medskip 
+
+\begin{defn} [IBVP with Neumann Boundary Condition of wave equation]
+    The initial/boundary value problem (IBVP) with a Neumann boundary condition at the endpoint $x=0$ is given by:
+    \[\begin{cases}
+        w_{tt} = c^2 w_{xx} &,\ x\in\R^+,\ t > 0 \\
+        w_x(0,t) = 0 &,\ t > 0 \\
+        w(x,0) = \phi(x) &,\ x \in \R^+ \\
+        w_t(x,0) = \psi(x) &,\ x \in \R^+
+    \end{cases}\]
+\end{defn}
+Again, we use the reflection method to solve the above question. Even extensions are used in this case, as we are dealing with the Neumann form of the IBVP.
+
+\medskip 
+
+\begin{lem}
+    The solution to the IBVP with Neumann Boundary Condition of wave equation is given by:
+    \[w(x,t) = \begin{dcases}
+        \frac{\phi(x+ct) + \phi(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} \psi(s)\ ds &, x > ct\\
+        \frac{\phi(x+ct) + \phi(ct-x)}{2} + \frac{1}{2c} \br{\int_{0}^{ct-x} + \int_0^{x+ct}} \psi(s)\ ds &, 0 < x < ct
+    \end{dcases}\]
+\end{lem}
+\begin{proof}
+    Define $\tilde\phi$ and $\tilde\psi$ be the even extension of $\phi$ and $\psi$ respectively. Consider the Cauchy problem:
+    \[\begin{cases}
+        u_{tt}-c^2u_{xx} = 0 &,\ x\in \R, t>0 \\
+        u(x,0) = \tilde\phi(x) &,\ x\in \R \\
+        u_t(x,0) = \tilde\psi(x) &,\ x\in \R
+    \end{cases}\]
+    We define the restriction of the solution $u(x,t)$ to the positive half-line as
+    \[w(x,t):= u(x,t)\vert_{x\geq 0}\]
+    and we claim that $w$ is the solution to the IBVP with Neumann Boundary Condition of wave equation. It is clear that $w$ satisfies the wave equation on the positive half-line.
+
+    We verify that $w$ satisfies the initial/boundary conditions. First, since $\tilde{\phi}$ and $\tilde{\psi}$ are even functions, the solution $u$ to the above Cauchy problem is even in $x$, and thus $u_x(x,t)$ is odd in $x$, hencefor all $t > 0$ we have
+    \[w_x(0,t) = u_x(0,t) = 0\]
+    Next, the initial condition of the Cauchy problem $u(x,0) = \tilde{\phi}(x)$ implies that for all $x > 0$ we have
+    \[w(x,0)=\phi(x)\]
+    Similarly the initial condition of the Cauchy problem $u_t(x,0) = \tilde{\psi}(x)$ implies that for all $x > 0$ we have
+    \[w_t(x,0) = \psi(x)\]
+    This shows that $w$ is indeed the required solution. It remains to derive its formula. By D'Alembert's formula for the Cauchy problem of wave equation, we have that for $x\in \R$ that
+    \[u(x,t) = \frac{1}{2}\br{\func{\tilde\phi}{x+ct} + \func{\tilde\phi}{x-ct}} + \frac{1}{2c} \int_{x-ct}^{x+ct}\func{\tilde\psi}{s}\ ds\]
+    We have to restrict the solution to $x\geq 0$ to derive the formula for $w$. In particular, we have to decide what value of $\tilde\phi$ and $\tilde\psi$ to use, which depends on the sign of $x+ct$ and $x-ct$. First note that in the IBVP we always have $x\geq0$ and $t>0$, since $c> 0$ and thus $x+ct> 0$, thus
+    \[\func{\tilde\phi}{x+ct} = \func{\phi}{x+ct} \quad \text{and} \quad \func{\tilde\psi}{x+ct} = \func{\psi}{x+ct}\]
+    It now remains to determine the sign of $x-ct$. First, if $x-ct > 0$, then we have 
+    \[ w(x,t) = \frac{\phi(x+ct) + \phi(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} \psi(s)\ ds\]
+    Next, if $x-ct < 0$, then we have
+    \begin{align*}
+        w(x,t) &= \frac{1}{2}\br{\func{\tilde\phi}{x+ct} + \func{\tilde\phi}{x-ct}} + \frac{1}{2c} \int_{x-ct}^{x+ct}\func{\tilde\psi}{s}\ ds \\
+        &= \frac{1}{2}\br{\func{\phi}{x+ct} + \func{\phi}{ct-x}} + \frac{1}{2c}\br{\int_{x-ct}^{0} + \int_0^{x+ct}}\func{\tilde\psi}{s}\ ds\\
+        &= \frac{1}{2}\br{\func{\phi}{x+ct} + \func{\phi}{ct-x}} + \frac{1}{2c}\br{\int_{x-ct}^{0} \psi(-s)\ ds + \int_0^{x+ct}\psi(s)\ ds}\\
+        &= \frac{1}{2}\br{\func{\phi}{x+ct} + \func{\phi}{ct-x}} + \frac{1}{2c}\br{\int_{0}^{ct-x} \psi(y)\ dy + \int_0^{x+ct}\psi(s)\ ds} \text{where } y:= -s
+    \end{align*}
+    As $y$ is just a dummy variable, we can replace it with $s$ in the first integral. This completes the proof.
+\end{proof}
+
+\medskip 
+
+\begin{re} [Physical Interpretation and the Reflection of Waves at the Boundary]
+    The setup for IBVP with Neumann Boundary Condidtion of wave equation can be interpreted as an infinite string with:
+    \begin{itemize}
+        \item initial displacement given by $\phi(x)$
+        \item initial velocity given by $\psi(x)$
+        \item the endpoint $x=0$ is free to move vertically and staying zero slope for all time (this corresponds to $w_x(0,t) = 0$)
+    \end{itemize}
+    Similar to the case of Dirichlet boundary condition, we have to decide whether the reflection of the wave changes the sign of the wave or not. Note that despite the end is free to move vertically, the horizontal position of the end is fixed, thus the wave is reflected at the boundary. 
+
+    At $x=0$, by the d'Alambert formula we get 
+    \[w_x(0,t) = F'(-ct) + G'(+ct) = 0\]
+    This implies that $G'(+ct) = -F'(-ct)$. For convenience we write $G'(s) = -F'(-s)$ with $s:= ct$. Integrating w.r.t. $s$ gives $G(s) = F(-s) + C$. The constant $C$ can must be $0$, since we assumed finite energy. In short, this shows that the reflected wave has the same sign as the original wave.
+
+    The analysis is similar: if close enough, i.e. $0<x<ct$, the reflected wave can chase up the original wave. Since the sign of both waves are the same, by Superposition Principle, the reflected wave can amplify the original wave. If far enough, i.e. $x > ct$, the reflected wave cannot catch up the original wave, thus no amplification occurs, and the solution is the same as the solution on the whole line.
+\end{re}
