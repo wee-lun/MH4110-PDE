@@ -298,3 +298,224 @@ Again, we use the reflection method to solve the above question. Even extensions
 
     The analysis is similar: if close enough, i.e. $0<x<ct$, the reflected wave can chase up the original wave. Since the sign of both waves are the same, by Superposition Principle, the reflected wave can amplify the original wave. If far enough, i.e. $x > ct$, the reflected wave cannot catch up the original wave, thus no amplification occurs, and the solution is the same as the solution on the whole line.
 \end{re}
+
+\section{Diffusion with a Source}
+In this section, we study diffusion with a source.
+
+\medskip 
+
+\begin{defn} [Diffusion with a source on $\R$]
+    The PDE system that represents diffusion with a source on the whole line is defined as:
+    \[\begin{cases}
+    u_t - ku_{xx} = f(x,t) &,\ x\in \R,\ t>0\\
+    u(x,0) = \phi(x)
+    \end{cases}\]
+    where $f(x,t)$ and $\phi(x)$ are arbitrary given functions.
+\end{defn}
+
+Here, the function $f(x,t)$ is called the source term. Physically, it measures the physical effect of an external heat source, giving instantaneous temperature change.
+
+\medskip 
+
+\begin{thm}
+    The solution to the PDE system above is 
+    \[u(x,t) = \int_{-\infty}^{\infty} S(x-y,t)\phi(y)\ dy + \int_0^t \int_{-\infty}^{\infty} S(x-y,t-s)f(y,s)\ dyds\]
+    where $S(x,t)$ is the Gaussian kernel.
+\end{thm}
+
+\begin{proof}
+    We show that it is indeed an solution by direct substituition. Taking differentiation w.r.t. $t$, we see 
+    \begin{align*}
+        &\ \ \ \ \diffp{}{t}u(x,t) \\
+        &= \diffp{}{t} \int_{-\infty}^{\infty} S(x-y,t)\phi(y)\ dy + \diffp{}{t}\int_0^t \int_{-\infty}^{\infty} S(x-y,t-s)f(y,s)\ dyds\\
+        &=  \int_{-\infty}^{\infty} \diffp{}{t}S(x-y,t)\phi(y)\ dy + \int_{-\infty}^{\infty}S(x-y,0)f(y,t)\ dy + \int_0^t \int_{-\infty}^{\infty} \diffp{}{t}S(x-y,t-s)f(y,s)\ dyds\\
+    \end{align*}
+    Recall that Gaussian kernel is the solution for the diffusion equation with Dirac delta function as the initial delta, i.e.
+    \[\begin{cases}
+        S_t = kS_{xx} \\
+        S(x-y,0) = \delta(x-y)
+    \end{cases}\]
+    We substitute $S_t = kS_{xx}$ into the above equation, giving us:
+    \begin{align*}
+        &\ \ \ \ \diffp{}{t}u(x,t) \\
+        &=  \int_{-\infty}^{\infty} k\diffp[2]{}{x}S(x-y,t)\phi(y)\ dy + \int_{-\infty}^{\infty}\delta(x-y)f(y,t)\ dy + \int_0^t \int_{-\infty}^{\infty} k\diffp[2]{}{x}S(x-y,t-s)f(y,s)\ dyds\\
+        &= k\diffp[2]{}{x} \int_{-\infty}^{\infty} S(x-y,t)\phi(y)\ dy + f(y,t)+ k\diffp[2]{}{x}\int_0^t \int_{-\infty}^{\infty} S(x-y,t-s)f(y,s)\ dyds\\
+        &= k\diffp[2]{}{x}\br{\int_{-\infty}^{\infty} S(x-y,t)\phi(y)\ dy + \int_0^t \int_{-\infty}^{\infty} S(x-y,t-s)f(y,s)\ dyds} + f(y,t)\\
+        &= k\diffp[2]{}{x} u(x,t) + f(x,t)
+    \end{align*}
+    This shows that $u(x,t)$ solves the inhomogenous diffusion equation. Next, verify the initial condition: Let $t\to 0$, the first term of the solution $u$ becomes
+    \[\int_{-\infty}^{\infty} S(x-y,0)\phi(y)\ dy = \int_{-\infty}^\infty \delta(x-y)\phi(y)\ dy = \phi(x)\]
+    The second term of the solution $u$ becomes an integral where $s$ is evaluated from $0$ to $0$, thus vanishes. This proves that 
+    \[u(x,0) = \phi(x)\]
+    This completes the proof.
+\end{proof}
+
+\begin{re}
+    The interpretation of the first term of the solution is that the initial temperature distribution will be averaged out along the entire rod. But note that there is also an external heat source, thus it must be averaged out, not only over the entire rod, but over time as well.
+\end{re}
+
+We can also study the diffusion with a source on a half-line:
+
+\medskip 
+
+\begin{defn} [Dirichlet diffusion with source on half-line]
+    The diffusion with a source on a half-line is modelled by the following system:
+    \[\begin{cases}
+        v_t - kv_{xx} = f(x,t),\ x\in \R^+,\ t>0 \\
+        v(0,t) = h(t) \\
+        v(x,0) = \phi(x)
+    \end{cases}\]
+    This is a Dirichlet problem, and $h(t)$ is the boundary source.
+\end{defn}
+
+The strategy to solve the Dirichlet problem is also the method of reflection and odd extension, but it requies homogenous boundary condition (i.e. the condition when $x=0$ is $0$). To do this, consider the substitution
+\[V(x,t) := v(x,t) - h(t)\]
+One can easily verify that $V(x,t)$ solves
+\[\begin{cases}
+    V_t - kV_{xx} = f(x,t)-h'(t),\ x\in \R^+,\ t>0 \\
+    V(0,t) =  \\
+    V(x,0) = \phi(x) -h(0)
+\end{cases}\]
+This problem then has a homogenous boundary condition, and so the method of reflection can now be applied. Once $V(x,t)$ is solved, the solution $v(x,t)$ can be recovered by
+\[v(x,t) = V(x,t) + h(t)\]
+Of course, Neumann problem can also be solved:
+
+\medskip
+
+\begin{defn} [Neumann diffusion with source on half-line]
+    The diffusion with a source on a half-line is modelled by the following system:
+    \[\begin{cases}
+        w_t - kw_{xx} = f(x,t),\ x\in \R^+,\ t>0 \\
+        w_x(0,t) = h(t) \\
+        w(x,0) = \phi(x)
+    \end{cases}\]
+    This is a Neumann problem, and $h(t)$ is the boundary source.
+\end{defn}
+Similarly, define 
+\[W(x,t) = w(x,t)-xh(t)\]
+and check that it satisfies
+\[\begin{cases}
+        W_t - kW_{xx} = f(x,t)-xh'(t),\ x\in \R^+,\ t>0 \\
+        W_x(0,t) = 0 \\
+        W(x,0) = \phi(x)-xh(0)
+\end{cases}\]
+This problem has a homogenous boundary condition, and thus the method of reflection and even extension can be used. The solution $w(x,t)$ can be recovered using 
+\[w(x,t) = W(x,t) + xh(t)\]
+once $W(x,t)$ is solved.
+
+\section{Waves with a Source}
+
+We now study the same problem, except that the setting is now on wave equations:
+
+\medskip 
+
+\begin{defn} [Waves with a source on $\R$]
+    The PDE system that represents waves with a source on the whole line is defined as:
+    \[\begin{cases}
+        u_{tt} - c^2u_{xx} = f(x,t)\quad ,\ x\in \R,\ t>0\\
+        u(x,0) = \phi(x)\\
+        u_t(x,0) = \psi(x) 
+    \end{cases}\]
+    where $f(x),\phi(x)$ and $\psi(x)$ are arbitrary function. 
+\end{defn}
+
+Here, the function $f(x,t)$ is the source term. Physically, it measures the external force applied on the string when the string is vibrating.
+
+\medskip 
+
+\begin{thm}
+    The solution to the PDE system above is 
+    \[u(x,t) = \frac{1}{2}[\phi(x+ct) + \phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct}\psi(y)\ dy + \frac{1}{2c}\int_{0}^{t}\int^{x+c(t-s)}_{x-c(t-s)} f(y,s)\ dyds\]
+\end{thm}
+\begin{proof}
+    Recall that the characteristic triange of the point $(x_0,t_0)$ is the triangular region with three vertices $(x_0,t_0), (x_0-ct_0,0)$, and $(x_0+ct_0,0)$, which we denote as $\triangle$. Taking integration on $f$ over $\triangle$ gives
+    \[\iint_{\triangle}f\ dxdt = \iint_{\triangle}(u_{tt} -c^2 u_{xx})\ dxdt\]
+    We will be applying Green's Theorem. Let $P = -c^2 u_x$ and $Q = -u_t$, then 
+    \[P_x - Q_t = -c^2 u_{xx} + u_{tt}\]
+    Thus the equation above can be rewritten using Green's Theorem:
+    \[\iint_{\triangle}f\ dxdt = \int_{L_0 + L_1 + L_2} (-c^2 u_x\ dt - u_t\ dx)\]
+    where $L_0,L_1, L_2$ are the lines from $(x_0-ct_0,0)$ to $(x_0+ct_0, 0)$ ,$(x_0+ct_0,0)$ to $(x_0,t_0)$, and $(x_0+ct_0,0)$ to $(x_0,t_0)$, respectively. We evaluate the integral seprately:
+    \begin{itemize}
+        \item On $L_0$, we have $t=0$, so $dt = 0$. Also $u_t(x,t) = u_t(x,0) = \psi(x)$, so we get \[\int_{L_0} (-c^2 u_x\ dt - u_t\ dx) = \int_{L_0} (-u_t dx) = -\int_{x - ct}^{x + ct}\psi(x)\ dx\]
+        \item The line segment $L_1$ is represented by $x+ct = x_0 + ct_0$. This implies that $dx + cdt = 0$. Arranging we get $dt = -dx/c$, or $dx = -cdt$. So \[\int_{L_1} (-c^2 u_x\ dt - u_t\ dx) = \int_{L_1} (c u_x\ dx + cu_t\ dt) = c\int_{L_1}(u_x\ dx + u_t\ dt)\]
+        Recall by chain rule we see that $du = u_xdx + u_t dt$. So 
+        \begin{align*}
+            \int_{L_1} (-c^2 u_x\ dt - u_t\ dx) &= c\int_{L_1} 1 du \\
+            &= cu(x_0, t_0) -cu\br{x_0 + ct_0, 0}\\ 
+            &= cu(x_0, t_0) -c\phi(x_0 + ct_0)
+        \end{align*}
+        \item The line segment $L_2$ is represented by $x-ct = x_0 - ct_0$. This implies that $dx - cdt = 0$. Arranging we get $dt = dx/c$, or $dx = cdt$. So \[\int_{L_2} (-c^2 u_x\ dt - u_t\ dx) = \int_{L_2} (-c u_x\ dx - cu_t\ dt) = -c\int_{L_2}(u_x\ dx + u_t\ dt)\]
+        Recall by chain rule we see that $du = u_xdx + u_t dt$. So 
+        \begin{align*}
+            \int_{L_2} (-c^2 u_x\ dt - u_t\ dx) &= c\int_{L_2} 1 du \\
+            &= -cu(x_0-ct_0, 0) + cu\br{x_0, t_0}\\ 
+            &= cu(x_0, t_0) -c\phi(x_0 + ct_0)
+        \end{align*}
+    \end{itemize}
+    Therefore, adding up all terms together, we get 
+    \[\iint_\triangle d\ dxdt = -\int_{x - ct}^{x + ct}\psi(x)\ dx + 2cu(x_0, t_0) -2c\phi(x_0 + ct_0)\]
+    We see $u$ appears in second term of RHS. The required solution formula follows from isolating it out. Take note that $(x_0, t_0)$ is to represent any point in the half plane $t\geq 0$, thus we can change them back to $(x,t)$. This completes the proof.
+\end{proof}
+
+Similarly, we can study the wave with a source on a half-line, which could be studied as Dirichlet problem or Neumann problem:
+
+\medskip 
+
+\begin{defn} [Dirichlet wave with source on half-line]
+    The wave with a source on a half-line is modelled by the following system:
+    \[\begin{cases}
+        v_{tt} - c^2 v_{xx} = f(x,t),\ x\in \R^+,\ t>0\\
+        v(0,t) = h(t)\\
+        v(x,0) = \phi(x)\\
+        v_t(x,0) = \psi(x)
+    \end{cases}\]
+\end{defn}
+
+Again we use the substitution method: let $V(x,t):= v(x,t)-h(t)$, then it satisfies 
+\[\begin{cases}
+    V_{tt} - c^2 V_{xx} = f(x,t)-h''(t),\ x\in \R^+,\ t>0\\
+    V(0,t) = 0\\
+    V(x,0) = \phi(x)-h(0)\\
+    V_t(x,0) = \psi(x)-h'(0)
+\end{cases}\]
+This problem has a homogenous boundary condition, allowing the use of the method of reflection and odd extension. For simplicity let $F(x,t) := f(x,t) -h''(t)$, $\Phi(x) = \phi(x)-h(0)$, and $\Psi(x) = \psi(x) -h'(0)$, and so the system is now:
+\[\begin{cases}
+    V_{tt} - c^2 V_{xx} = F(x,t),\ x\in \R^+,\ t>0\\
+    V(0,t) = 0\\
+    V(x,0) = \Phi(x)\\
+    V_t(x,0) = \Psi(x)
+\end{cases}\]
+Let $\tilde{F}, \tilde{\Phi}, \tilde{\Psi}$ be the odd extension of $F, \Phi, \Psi$, repsectively. We then solve the extended wave equation on the $\R$:
+\[\begin{cases}
+    U_{tt} - c^2 V_{xx} = \tilde F(x,t),\ x\in \R,\ t>0\\
+    U(0,t) = 0\\
+    U(x,0) = \tilde\Phi(x)\\
+    U_t(x,0) = \tilde\Psi(x)
+\end{cases}\]
+By the solution formula given in previous section, the solution is 
+\[U(x,t) = \frac{1}{2}[\tilde\Phi(x+ct) + \tilde\Phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} \tilde\Psi(y)\ dy + \frac{1}{2c} \int_{0}^{t}\int_{x-c(t-s)}^{x+c(t-s)} \tilde F(y,s)\ dyds\]
+The required solution $U(x,t) = V(x,t)$ is restricted on $x>0$, which we now explicitly construct it. As usual, this has to be separate into two cases.
+
+
+Firstly, when $x-ct>0$, i.e. $x>ct$, then we get 
+\[V(x,t) = \frac{1}{2}[\Phi(x+ct) + \Phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} \Psi(y)\ dy + \frac{1}{2c} \int_{0}^{t}\int_{x-c(t-s)}^{x+c(t-s)}  F(y,s)\ dyds\]
+Expanding out $V, \Phi, \Psi$, and $F$, upon rearranging we get 
+\[v(x,t) = \frac{1}{2}[\phi(x+ct) + \phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} \psi(y)\ dy + \frac{1}{2c} \int_{0}^{t}\int_{x-c(t-s)}^{x+c(t-s)}  f(y,s)\ dyds\]
+
+Secondly, when $x-ct<0$, i.e. $x<ct$, then you get a notoriously tedious and complicated integration process which I don't think it's worth my effort typing out, thus I will only show you the final answer:
+\begin{align*}
+    v(x,t) &= \func{h}{t-\frac{x}{c}} + \frac{1}{2}[\phi(x+ct) + \phi(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} \psi(y)\ dy \\
+    &+ \frac{1}{2c}\sbr{\int_{t-\frac{x}{c}}^t \int_{x-c(t-s)}^{x+c(t-s)} + \int_{0}^{t-\frac{x}{c}} \int_{c(t-s)-x}^{x+c(t-s)}} f(y,s)\ dyds
+\end{align*}
+
+\begin{defn} [Neumann wave with source on half-line]
+    The wave with a source on a half-line is modelled by the following system:
+    \[\begin{cases}
+        w_{tt} - c^2 w_{xx} = f(x,t),\ x\in \R^+,\ t>0\\
+        w_x(0,t) = g(t)\\
+        w(x,0) = \phi(x)\\
+        w_t(x,0) = \psi(x)
+    \end{cases}\]
+\end{defn}
+
+The Neumann problem of is similar, where substituting $W(x,t) = w(x,t)-xg(t)$ reduces the problem into homogenous boundary condition. Then use the reflection method to get the solution formula.
