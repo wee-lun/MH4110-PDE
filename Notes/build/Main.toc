@@ -15,3 +15,7 @@
 \contentsline {section}{\numberline {3.2}Reflection of Waves}{32}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Diffusion with a Source}{35}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Waves with a Source}{37}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Boundary Problems}{41}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Boundary Value Problems}{42}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Separation of Variables: The Neumann Condition}{45}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Mixed Boundary Conditions}{46}{section.4.3}%

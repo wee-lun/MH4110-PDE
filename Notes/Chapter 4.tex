@@ -1,0 +1,238 @@
+\chapter{Boundary Problems}
+
+Before starting the chapter, we give a short review on the following question, which will be used later.
+
+Supposed we want to solve the following ODE:
+\[\begin{cases}
+    X''(x) + \lambda X(x) = 0\\
+    X(0) = X(\ell) = 0
+\end{cases}\]
+where $\lambda\in \R$ and $\ell >0$. It is known that the characteristic equation (in terms of $\Lambda$) is
+\[\Lambda^2 + \lambda = 0\]
+\begin{enumerate}
+    \item If $\lambda<0$, then $\Lambda_{1,2} = \pm \sqrt{-\lambda}$, which gives us solution 
+    \[X(x) = c_1 e^{\sqrt{-\lambda}x} + c_2 e^{-\sqrt{-\lambda}x}\] 
+    Substituting into the given initial conditions we get  
+    \[\begin{cases}
+        c_1 + c_2 &= 0\\
+        c_1 e^{\sqrt{-\lambda}\ell} + c_2 e^{-\sqrt{-\lambda}\ell} &= 0
+    \end{cases}\]
+    Together this gives $c_1 = c_2 = 0$, so $X(x) = 0$.
+    \item If $\lambda = 0$, then $\Lambda_{1,2} = 0$, which gives us solution 
+    \[X(x) = c_1 e^{0x} + c_2 xe^{0x} = c_1 + c_2x\]
+    Solving out $c_1$ and $c_2$ using the given initial conditions give $c_1 = c_2 = 0$, so $X(x) = 0$.
+    \item If $\lambda >0$, then $\Lambda_{1,2} = \pm \sqrt{-\lambda}i$, which gives us solution 
+    \[X(x) = c_1 \cos(\sqrt{\lambda}x) + c_2 \sin(\sqrt{\lambda}x)\]
+    From $X(0) = 0$ we get $c_1= 0$. Together with the condition $X(\ell) = 0$, we get 
+    \[c_2 \sin(\sqrt{\lambda} \ell) = 0\implies c_2 = 0\quad \text{or} \quad \sin\sqrt({\lambda}\ell) = 0\]
+    Note that $c_2 = 0$ leads to trivial solution. On the other hand:
+    \begin{align*}
+        \sin \sqrt({\pi} \ell) = 0 
+        &\implies \sqrt{\lambda}\ell = k\pi,\quad k \in \Z^+ \\
+        &\implies \sqrt\lambda = \frac{k\pi}{\ell}\\
+        &\implies \sqrt\lambda = \frac{k^2\pi^2}{\ell^2}
+    \end{align*}
+    Thus the non-trivial solution is 
+    \[X(x) = c_2 \sin\frac{k\pi x}{\ell},\quad k\in \Z^+\]
+    In this case, to be specific, for every $k\in \Z^+$ we define $\lambda_k = \frac{k^2\pi^2}{\ell^2}$ and 
+    \[X_k (x) = \sin \frac{k\pi x}{L}\]
+    Then 
+    \[X(x) = \sum_{k=1}^\infty X_k(x) = \sum_{k=1}^\infty \sin\frac{k\pi x}{\ell}\]
+    is also a solution if and only if the RHS converges.
+\end{enumerate}
+
+This finishes the preparation.
+
+\section{Boundary Value Problems}
+We have been studying PDEs on whole line or half line. However, realistically many physical problems have boundaries. This chapter studies the boundary value problems of PDEs.
+
+We start from wave equation:
+
+\medskip
+
+\begin{defn} [Homogeneous wave equation with Dirichlet boundary conditions]
+    The wave equation $u_{tt} = c^2 u_{xx}$ where $0<x<\ell$ and $t>0$ is subjected to the homogeneous boundary conditions
+    \[u(0,t) = u(\ell,t)=0, \quad t>0\]
+    and the initial condition
+    \[u(x,0) = \phi(x),\quad u_t(x,0)=\psi(x),\quad 0<x<\ell\]
+    where $c,\ell>0$ are given constants, and $\phi,\psi$ are given functions.
+\end{defn}
+
+The whole setting is analogous to all of our previous study, except that now there is a restriction on the value of $x$, setting two 'walls' at $x=0$ and $x = \ell$.
+
+The strategy of solving such a problem is called \emph{separaction of variables}, where we first look for a separated solution in the form of $u(x,t) = X(x)T(t)$, which substituting into the wave equation will reduce into ODEs for $X$ and $T$.
+
+\medskip 
+
+\begin{thm}
+    The homogeneous wave equation with Dirichlet boundary conditions has the following series solution:
+    \[u(x,t) = \sum_{n=1}^\infty \br{A_n \cos \frac{n\pi ct}{\ell} + B_n \sin \frac{n\pi ct}{\ell}}\sin\frac{n\pi x}{\ell}\]\
+    where $A_n$ and $B_n$ are to be determined by the initial condition.
+\end{thm}
+\begin{proof}
+    Assuming we have the solution of the form $u(x,t) = X(x)T(t)$, substituting back to the equation leads to 
+    \begin{equation}\label{eqn: ''lambda}
+        X(x)T''(t) = c^2 X''(x)T(t) \implies -\frac{X''(x)}{X(x)} = -\frac{T''(t)}{c^2T(t)} := \lambda
+    \end{equation}
+    where the minus sign is inserted for later convenience. We claim that $\lambda$ is a constant, which can be seen by noting that $x$ and $t$ are independent variables, so 
+    \[\diffp{\lambda}{t} = \diffp{}{t}\br{-\frac{X''(x)}{X(x)}} = 0 \qand \diffp{\lambda}{x} = \diffp{}{x}\br{-\frac{T''(x)}{c^2 T(t)}} = 0\]
+    We also prove that $\lambda>0$:
+    \begin{enumerate}
+        \item If $\lambda = 0$, Equation (\ref{eqn: ''lambda}) gives $X''=0$, so $X(x) = ax + b$. The boundary condition $u(0,t) = u(\ell,t) = 0$ implies
+        \[X(0)T(t) = X(\ell)T(t) = 0\]
+        and so $X(0) = X(\ell) = 0$. Solving out we get $a=b=0$, giving $X(x) = 0$, thus leads to trivial solution, which we are not interested at.
+        \item If $\lambda<0$, Equation (\ref{eqn: ''lambda}) gives
+        \[X''(x) + \lambda X(x) = 0\]
+        where by the first case of our previous preparation we know we have trivial solution, which we are also not interested at.
+    \end{enumerate}
+    With this we can now safely assume that $\lambda = \beta^2$ for some $\beta >0$. We thsu obtain a pair of separate ODEs from Equation (\ref{eqn: ''lambda}):
+    \[\begin{cases}
+        X''(x) + \beta^2 X(x) = 0\\
+        T''(t) + c^2\beta^2 T(t) = 0
+    \end{cases}\]
+    The first ODE in terms of $x$ has general solution 
+    \[X(x) = C\cos \beta x + D \sin \beta x\]
+    where $C$ and $D$ are arbitrary constant. Recall that the boundary conditions demand $u(0,t) = u(\ell,t)=0$, i.e. $X(0)T(t)=X(\ell)T(t) = 0$. If $T(t)=0$ it clear that $u(x,t)=X(x)T(t) = 0$ is the trivial solution. So $T(t)\neq 0$, and we have $X(0) = X(\ell)=0$, i.e.
+    \[\begin{cases}
+        C &= 0\\
+        D\sin\beta\ell &= 0
+    \end{cases}\]
+    If $D=0$, we ended up with trivial solution, so we consider $\sin \beta\ell - 0$. This implies 
+    \[\beta\ell = n\pi, \ n\in \Z \implies \beta = \frac{n\pi }{\ell},\ n\in \Z\]
+    Recall that $\lambda = \beta^2$, so similar to what we did in the previous preparation, let 
+    \[\lambda_n = \br{\frac{n\pi}{\ell}}^2 \qand X_n(x) = \sin\frac{n\pi x}{\ell}\]
+    We see that for each $n\in \Z$ the pair $(\lambda_n, X_n)$ is a solution to the problem 
+    \[X'' = -\lambda X, \quad X(0) = X(\ell) = 0\]
+    We now turn our attention to the second ODE $T'' + c^2 \beta^2 T = 0$. With the same argument, we can determind the form of its general solution and find that the roots of the characteristic equation are
+    \[\pm \frac{n\pi c}{\ell} i\]
+    and thus 
+    \[T_n(t) = A_n \cos \frac{n\pi ct}{\ell} + B_n \sin \frac{n\pi ct}{\ell}\]
+    for each $n\in Z^+$, where $A_n$ and $B_n$ are arbitrary constant.
+
+    Thus, the wave equation with boundary conditions $u(0,t) = u(\ell, t) = 0$ has solution, in fact, infinite number of separated solutions:
+    \[u(x,t) = X_n(x)T_n(t) = \sin\frac{n\pi x}{\ell}\br{A_n \cos \frac{n\pi ct}{\ell} + B_n \sin \frac{n\pi ct}{\ell}} \]
+    for each $n\in \Z^+$. Based on the principle of superposition, the series
+    \[u(x,t) = \sum_{n=1}^\infty \sin\frac{n\pi x}{\ell}\br{A_n \cos \frac{n\pi ct}{\ell} + B_n \sin \frac{n\pi ct}{\ell}} \]
+    is also a solution.
+
+    Lastly, we have to look for $A_n$ and $B_n$ using the initial condition $u(x,0) = \phi(x)$ and $u_t(x,0)  =\psi(x)$. These two conditions give two equations:
+    \[\phi(x) = \sum_{n=1}^{\infty} A_n \sin \frac{n\pi x}{\ell}\]
+    \[\psi(x) = \sum_{n=1}^{\infty} \frac{n\pi c}{\ell} B_n \sin\frac{n\pi x}{\ell}\]
+    The determination of $A_n$ and $B_n$ requires the technique of Fourier series, which will be covered in Chapter 5. The proof is considered completed at the moment.
+\end{proof}
+
+\begin{re} [Coefficients of $t$ and frequency]
+    The coefficient of $t$ inside the series solution is $n\pi c/\ell$. These are called the \emph{frequencies}. The smallest frequecy $\pi c/\ell$ is called the fundamental note. All integer multiples of the fundamental notes, such as $2\pi c/\ell$ and $3 \pi c/\ell$, are called the overtones. Notice that shortening the length of $\ell$ results in larger frequency. This matched with the physical phenomenon where plucking a shorter length of string in any string instrument gives a sharper (higher frequency) sound.
+\end{re}
+
+Of course, we need not restrict ourselves to study merely the wave equation. The following is an analogous formulation of problem in terms of heat equation
+
+\medskip 
+
+\begin{defn} [Homogeneous heat equation with Dirichlet boundary conditions]
+    The wave equation $u_{t} = k u_{xx}$ where $0<x<\ell$ and $t>0$ is subjected to the homogeneous boundary conditions
+    \[u(0,t) = u(\ell,t)=0, \quad t>0\]
+    and the initial condition
+    \[u(x,0) = \phi(x), \quad 0<x<\ell\]
+    where $k,\ell>0$ are positive constants, and $\phi$ is given function.
+\end{defn}
+
+It is natural to interpret it as having our usual heat conduction, except that the body now has finite length, and the two ends of the body is kept cold. The same solution technique above is applied to obtain the solution in this case:
+
+\medskip 
+
+\begin{thm}
+    The homogeneous heat equation with Dirichlet boundary conditions has solution
+    \[u(x,t) = \sum_{n=1}^{\infty} A_n \exp\br{-\br{\frac{n\pi}{\ell}}^2 kt}\sin \frac{n\pi x}{\ell}\]
+    provided that $\phi$ has the expansion 
+    \[\phi(x) = \sum_{n=1}^{\infty} A_n \sin \frac{n\pi x}{\ell}\]
+\end{thm}
+\begin{proof} [Proof sketch]
+    We only provide a sketch here, since the overall idea is similar to the case of wave equation. First, suppose that the solution takes the form $u(x,t) = X(x)T(t)$, which we get 
+    \[-\frac{X''}{X} = - \frac{T'}{kT} := \lambda\]
+    Again $\lambda$ is a constant. We have the eigenproblem 
+    \[X'' = -\lambda X\]
+    with condition $X(0) = X(\ell)=0$. There are infinitely many solutions pair:
+    \[\lambda_n = \br{\frac{n\pi}{\ell}}^2 \qand X_n(x) = \sin\frac{n\pi x}{\ell}\]
+    for each $n\in \Z^+$. On the other hand, the ODE
+    \[T' + \lambda k T = 0\]
+    has solutions, for each $n\in \Z^+$, that 
+    \[T_n(t) = A_n \exp\br{-\br{\frac{n\pi}{\ell}}^2 kt}\]
+    The solution follows directly. Of course, we have to solve out $A_n$ based on the provided initial condition $u(x,0) = \phi(x)$, and this will be covered in the later chapter.
+\end{proof}
+
+\section{Separation of Variables: The Neumann Condition}
+In this section we use the method of separation to solve wave equation and heat equation under the Neumann condition.
+
+\medskip 
+
+\begin{thm}
+    The homogeneous wave equation with Neumann boundary conditions:
+    \[u_{tt} = c^2 u_{xx},\ 0<x<\ell,\ t>0,\]
+    \[u_x(0,t) = u_x(\ell,t) = 0,\ t>0,\]
+    \[u(x,0) = \phi(x),\ u_t(x,0) = \psi(x),\ 0<x<\ell\]
+    has the following series solution:
+    \[u(x,t) = \frac{A_0 + B_0 t}{2} + \sum_{n=1}^{\infty} \br{A_n \cos\frac{n\pi ct}{\ell} + B_n \sin\frac{n\pi ct}{\ell}}\cos \frac{n\pi x}{\ell}\]
+    provided that the initial datas can be expanded into cosine Fourier series
+    \[\phi(x) = \frac{1}{2}A_0 + \sum_n A_n \cos \frac{n\pi x}{\ell}\]
+    \[\psi(x) = \frac{1}{2}B_0 + \sum_n \frac{n\pi c}{\ell}B_n \cos \frac{n\pi x}{\ell}\]
+\end{thm}
+\begin{proof} [Proof sketch]
+    The procedure is the same, where subtituting $u(x,t) = X(x)T(t)$ obtains
+    \[X'' = -\lambda X \qand -T'' = c^2 \lambda T\]
+    The first difference is that the boundary condition imply 
+    \[X'(0)T(t) = X'(\ell)T(t) = 0\]
+    Since $T(t)=0$ results in trivial solution, we see that we should have
+    \[X'(0) = X'(\ell) = 0\]
+    Again, we focus on the case $\lambda\geq 0$. Let $\lambda = \beta^2$, the general solution is 
+    \[X(x) = C\cos \beta x + D \sin \beta x\]
+    Differentiating $X(x)$ and using the condittion $X'(0)=X'(\ell)=0$, we get $D=0$ and $C\sin \beta\ell = 0$. We don't want $C=0$ as it gives trivial solution, so consider $\sin \beta\ell = 0$, which implies $\beta\ell = n\pi$ for any $n\in \Z$. This gives solution pair
+    \[\lambda_n = \br{\frac{n\pi}{\ell}}^2 \qand X_n(x) = \cos \frac{n\pi x}{\ell}\]
+    where $n\in \Z^+_0$. For $T(t)$, solving $T''= -c^2\lambda T$ gives the formula 
+    \[T_n(t) = A_n \cos \frac{n\pi ct}{\ell} + B_n \sin \frac{n\pi c t}{\ell}\]
+    for $n\geq 1$, while 
+    \[T_0(t) = \frac{1}{2}A_0 + \frac{1}{2}B_0 t\]
+\end{proof}
+
+For heat equation, we simply give the solution formula. The proof is omitted.
+
+\medskip 
+
+\begin{thm}
+    The homogeneous heat equation with Neumann boundary conditions:
+    \[u_{t} = k u_{xx},\ 0<x<\ell,\ t>0,\]
+    \[u_x(0,t) = u_x(\ell,t) = 0,\ t>0,\]
+    \[u(x,0) = \phi(x),\ 0<x<\ell\]
+    has the following series solution:
+    \[u(x,t) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty} A_n\exp\br{-\br{\frac{n\pi}{\ell}}^2 kt}\cos \frac{n\pi x}{\ell}\]
+    provided that $\phi$ can be expanded into cosine Fourier series
+    \[\phi(x) = \frac{1}{2}A_0 + \sum_n A_n \cos \frac{n\pi x}{\ell}\]
+\end{thm}
+
+\section{Mixed Boundary Conditions}
+
+We give a taste of mixed boundary condition problem, before treating them in a more serious manner in Chapter 5. An example of mixed boundary conditions is having Dirichlet conditions at one end of the finite interval, and Neumann conditions at the other. 
+
+For example, consider the heat equation with mixed boundary conditions:
+\[u_t= ku_{xx},\ 0<x<\ell,\ t>0,\]
+\[u(0,t) = u_x(\ell, t) = 0,\ t>0,\]
+\[u(x,0)=\phi(x),\ 0<x<\ell\]
+To get the solution formula, we again assume that $u(x,t)=X(x)T(t)$ and by substitution we get 
+\[X'' + \lambda X = 0\]
+where the provided initial boundary conditions implies that $X(0) = X'(\ell)=0$. 
+
+For $\lambda>0$, the solution structure is 
+\[X(x) = C\cos (\sqrt{\lambda}x) + D\sin (\sqrt\lambda x)\]
+The condition $X(0)=0$ implies $C=0$, while the condition $X'(\ell) = 0$ says that $D=0$ or $\cos(\sqrt{\lambda}\ell)=0$. We do not want the trivial solution, so we consider $\cos(\sqrt{\lambda}\ell)=0$. In general, the solutions are 
+\[\lambda_n  = \br{n+\frac{1}{2}}^2 \frac{\pi^2}{\ell^2} \qand X_n(x) = \sin \br{\br{n+\frac{1}{2}}\frac{\pi x}{\ell}}\]
+where $n\in \Z^+_0$.
+
+For $\lambda=0$, we se that $X''=0$ and $X(x)=ax+b$, and thus $X(0)=b=0$, and $X'(\ell) = a=0$. This gives trivial solution, which we also reject.
+
+For $\lambda<0$, the solution of the ODE is 
+\[X(x) = Ce^{-\sqrt{-\lambda}x} + D e^{\sqrt{-\lambda}x}\]
+Again, using the boundary conditions we can show that $C=D=0$, thus rejected as well.
+
+On the other hand, the equation for $T(t)$ is still the same as all our previous case. Therefore we get the following solution formula:
+\[u(x,t) = \sum_{n=0}^{\infty}A_n \exp\br{-\br{n+\frac{1}{2}}^2 \frac{\pi^2kt}{\ell^2}}\sin\br{\br{n+\frac{1}{2}}\frac{\pi x}{\ell}}\]
+where $A_n$ is determined by $\phi$.
