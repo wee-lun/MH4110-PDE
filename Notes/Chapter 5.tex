@@ -1,0 +1,260 @@
+\chapter{Fourier Series}
+
+In the previous chapter, we encounter problems of expanding coefficients in the derived solution formula. Here, we will see that this problem will be solved by the technique of Fourier Series. Again, just like previous chapter, we do some setup work that will ease our later computations.
+
+We first compute 
+\[I_1 = \int_0^L \sin\frac{n\pi x}{L} \sin\frac{m\pi x}{L}\ dx \text{ where } n,m\in \Z^+\]
+Note that by basic trigo identity we can simplify the integrand into 
+\begin{align*}
+    \sin\frac{n\pi x}{L} \sin\frac{m\pi x}{L} 
+    &= \frac{1}{2}\cos\br{\frac{n\pi x}{L} - \frac{m\pi x}{L}} - \frac{1}{2}\cos\br{\frac{n\pi x}{L} + \frac{m\pi x}{L}}\\
+    &= \frac{1}{2}\cos \frac{n-m}{L}\pi x - \frac{1}{2}\cos \frac{n+m}{L}\pi x
+\end{align*}
+and so the integral become 
+\[I_1 = \frac{1}{2}\int_0^L \cos \frac{n-m}{L}\pi x\ dx - \frac{1}{2}\int_0^L \cos \frac{n+m}{L}\pi x\ dx\]
+We split into two cases:
+\begin{itemize}
+    \item If $n=m$, then simply 
+    \[\left . I_1 = \frac{1}{2}\int_0^L 1\ dx - \frac{L}{2n\pi} \sin\frac{2n\pi x}{L}\right \vert^L_0 = \frac{1}{2}L - 0 = \frac{1}{2}L\]
+    \item If $n\neq m$, then we have 
+    \[\left . I_1 = \frac{1}{2}\frac{L}{(n-m)\pi}\sin\frac{n-m}{L}\pi x\right \vert ^L_0 - \left . \frac{1}{2}\frac{L}{(n+m)\pi}\sin\frac{n+m}{L}\pi x\right \vert ^L_0 = 0\]
+\end{itemize}
+In short we have 
+\[I_1 = \int_0^L \sin\frac{n\pi x}{L} \sin\frac{m\pi x}{L}\ dx = 
+\begin{cases}
+    0 &,\ n\neq m\\
+    \frac{L}{2} &, n=m
+\end{cases}\]
+Next, we compute
+\[I_2 = \int_{0}^{L} \cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\ dx \text{ where } n,m\in \Z^+\]
+Similarly, by arranging the integrand we have
+\[I_2 = \frac{1}{2}\int_0^L \cos\frac{n+m}{L}\pi x\ dx + \frac{1}{2}\int_0^L \cos\frac{n+m}{L}\pi x\ dx\]
+Splitting into cases:
+\begin{itemize}
+    \item When $n=m=0$, we have $I=L$.
+    \item When $n\neq m$, then 
+    \[I_2 = \left . \frac{1}{2}\frac{L}{(n+m)\pi}\sin\frac{(n+m)\pi}{L}x \right \vert_0^L + \left . \frac{1}{2}\frac{L}{(n-m)\pi}\sin\frac{(n-m)\pi}{L}x \right \vert_0^L = 0\]
+    \item When $n=m\neq 0$, then 
+    \begin{align*}
+        I_2 &= \frac{1}{2}\int_0^L \cos\frac{2n\pi}{L}x\ dx + \frac{1}{2}\int_0^L 1\ dx \\
+        &=\left . \frac{1}{2}\frac{L}{2n\pi}\sin\frac{2n\pi}{L}x \right \vert_0^L + \frac{1}{2}L\\
+        &= \frac{1}{2}L
+    \end{align*}
+\end{itemize}
+In short, we have 
+\[I_2 = \int_{0}^{L} \cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\ dx = \begin{cases}
+    L &,\ n=m=0\\
+    \frac{L}{2} &, n=m>0\\
+    0 &, n\neq m
+\end{cases}\]
+We compute 
+\[I_3 = \int_{-L}^L \cos\frac{n\pi x}{L}\sin\frac{m\pi x}{L}\ dx \text{ where } n\in\Z^+_0,\ m\in\Z^+\]
+We shall omit the calculation process. The final result is that 
+\[I_3 = \int_{-L}^L \cos\frac{n\pi x}{L}\sin\frac{m\pi x}{L}\ dx = 0\]
+Lastly, we compute that 
+\begin{align*}
+    I_4 = \int_{-L}^{L} \cos\frac{n\pi x}{\ell}\cos \frac{m\pi x}{\ell}\ dx 
+    &= \int_{0}^{L} \cos\frac{n\pi x}{\ell}\cos \frac{m\pi x}{\ell}\ dx - \int_{0}^{-L} \cos\frac{n\pi x}{\ell}\cos \frac{m\pi x}{\ell}\ dx \\
+    &= \int_{0}^{L} \cos\frac{n\pi x}{\ell}\cos \frac{m\pi x}{\ell}\ dx - \int_{0}^{L} \cos\frac{n\pi x}{\ell}\cos \frac{m\pi x}{\ell}\ dx\\
+    &= 0
+\end{align*}
+and
+\begin{align*}
+    I_5 = \int_{-L}^{L} \sin\frac{n\pi x}{\ell}\sin \frac{m\pi x}{\ell}\ dx 
+    &= \int_{0}^{L} \sin\frac{n\pi x}{\ell}\sin \frac{m\pi x}{\ell}\ dx - \int_{0}^{-L} \sin\frac{n\pi x}{\ell}\sin \frac{m\pi x}{\ell}\ dx \\
+    &= \int_{0}^{L} \sin\frac{n\pi x}{\ell}\sin \frac{m\pi x}{\ell}\ dx - \int_{0}^{L} \sin\frac{n\pi x}{\ell}\sin \frac{m\pi x}{\ell}\ dx\\
+    &= 0
+\end{align*}
+
+\section{Fourier Sine Series}
+Recall that a function $f$ is \emph{periodic} if 
+\[\exists p\in\Z^+ \text{ such that } f(x+p) = f(x)\ \forall x\in \operatorname{Dom}_f\]
+Here $p$ is called the period of $f(x)$. A good reason for mentioning this property is because both sine and cosine functions are periodic. In particular, both $\sin \omega x$ and $\cos \omega x$ are $\frac{2\pi }{\omega}$-periodic. The periodic property of sine and cosine function can help in simplfying the computations.
+
+We have encountered the Fourier sine series in the previous chapter. We give a formal definition here:
+
+\medskip 
+
+\begin{defn} [Fourier Sine Series]
+    Suppose $\phi(x)$ is a given function with domain $(0,\ell)$. The Fourier sine series of $\phi$ over $(0,\ell)$ is defined to be 
+    \[\phi(x) = \sum_{n=1}^{\infty} A_n \sin\frac{n\pi x}{\ell}\]
+    where $0<x<\ell$ and $A_n$ are some coefficients.
+\end{defn}
+
+The goal here is to find the coefficients $A_n$. To do so, recall that the eigeproblem
+\[X''(x) = -\lambda X(x) \qand X(0) = X(\ell) = 0\]
+has eigenfunctions, i.e. solutions, as
+\[\sbr{\sin \frac{\pi x}{\ell},\ \sin\frac{2\pi x}{\ell} \many \sin\frac{n\pi x}{\ell}, \dots }\]
+Recall that we have the following computation result:
+\[I_1 = \int_0^L \sin\frac{n\pi x}{L} \sin\frac{m\pi x}{L}\ dx = 
+\begin{cases}
+    0 &,\ n\neq m\\
+    \frac{L}{2} &, n=m
+\end{cases}\]
+This means that the series of sine functions are mutually orthogonal. Another clear observation says that they are linearly independent, as no one term is a multiple of another.
+
+We now determine the coefficients $A_n$. Suppose given the Fourier sine series of expansion of $\phi(x)$:
+\[\phi(x) = \sum_{n=1}^\infty A_n \sin\frac{n\pi x}{\ell}\]
+where $0<x<\ell$. Multiply both sides by $\sin\frac{m\pi x}{\ell}$ and take integration over $(0,\ell)$ we get 
+\[\int_0^\ell \phi(x)\sin\frac{m\pi x}{\ell}\ dx = \sum_{n=1}^\infty A_n \int_0^\ell \sin\frac{n\pi x}{\ell} \sin\frac{m\pi x}{\ell}\ dx \]
+By orthogonality, we can evaluate the RHS of the equation:
+\[\int_0^\ell \phi(x)\sin\frac{m\pi x}{\ell}\ dx = A_m \frac{\ell}{2}\]
+Arranging, we get 
+\[A_m = \frac{2}{\ell}\int_0^\ell \phi(x)\sin\frac{m\pi x}{\ell}\ dx\]
+Since $m$ is arbitrarily chosen, thus the above formula is applicable for all $A_m$ with $m\in\Z^+$. With this, we can now provide the full solution formula:
+
+\medskip 
+
+\begin{thm}
+    The homogeneous heat equation with Dirichlet boundary conditions
+    \[u_t = ku_{xx},\ 0<x<\ell,\ t>0\]
+    \[u(0,t)=u(\ell,t)=0,\ t>0\]
+    \[u(x,0) = \phi(x),\ 0<x<\ell\]
+    where $k,\ell\in \R^+$ and $\phi$ is given function, has solution formula
+    \[u(x,t) = \sum_{n=1}^{\infty} A_n \exp\br{-\br{\frac{n\pi}{\ell}}^2 kt}\sin \frac{n\pi x}{\ell}\]
+    where the coefficients $A_n$ are given by 
+    \[A_n = \frac{2}{\ell}\int_0^\ell \phi(x)\sin\frac{n\pi x}{\ell}\ dx\]
+    provided that the series formula $u(x,t)$ converges
+\end{thm}
+
+\medskip
+
+\begin{re} [Validity of the solution formula]
+    To emphasize again, despite we have determined the coefficients $A_n$, the solution formula $u(x,t)$ is only valid given that the series converges.
+\end{re}
+
+Despite our goal is to expand the coefficients in the solution formula, expanding a given function into Fourier series is often useful in many fields. We use an example to demonstrate the process.
+
+\medskip 
+
+\begin{ex}
+    We expand $\phi(x)=1$ where $x=(0,\ell)$ in Fourier sine series. By the derivation, the coefficient is 
+    \[A_n = \frac{2}{\ell} \int_0^\ell 1\ \sin\frac{n\pi x}{\ell}\ dx = -\frac{2}{n\pi}\cos \left . \frac{n\pi x}{\ell}\right \vert^\ell_0 = \frac{2}{n\pi}[1 - (-1)^n]\]
+    where $n\in\Z^+$. When $n$ is even, we get $A_n=0$. When $n$ is odd, we get $A_n = \frac{4}{n\pi}$. Thus the Fourier series expansion in $(0,\ell)$ is given by
+    \[1 = \sum_{n=1}^\infty A_n \sin\frac{n\pi x}{\ell} = \frac{4}{\pi}\br{\sin\frac{\pi x}{\ell} + \frac{1}{3} \sin\frac{3\pi x}{\ell} + \frac{1}{5} \sin\frac{5\pi x}{\ell} + \dots}\]
+\end{ex}
+
+\medskip 
+
+\begin{ex}
+    We expand $\phi(x)=x$ where $x\in(0,\ell)$ in Fourier sine series. Evaluate the coefficents using integration by parts we get:
+    \begin{align*}
+        A_n &= \frac{2}{\ell}\int_0^\ell x\sin\frac{n\pi x}{\ell}\ dx\\
+        &= \left . -\frac{2}{n\pi}\cos \frac{n\pi x}{\ell} \right \vert_0 ^\ell + \frac{2}{n\pi} \int_0^\ell \cos \frac{n\pi x}{\ell}\ dx\\
+        &= \frac{2\ell}{n\pi} (-1)^{n+1}
+    \end{align*}
+    Thus the Fourier sine expansion in $(0,\ell)$ is given by 
+    \[x = \frac{2\ell}{\pi} \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\sin\frac{n\pi x}{\ell} = \frac{2\ell}{\pi}\br{\sin\frac{\pi x}{\ell} - \frac{1}{2}\sin\frac{2\pi x}{\ell} + \frac{1}{3}\sin\frac{3\pi x}{\ell}}\]
+\end{ex}
+
+\section{Fourier Cosine Series}
+
+We give a formal definition for Fourier cosine series:
+
+\medskip 
+
+\begin{defn} [Fourier Cosine Series]
+    Suppose $\phi(x)$ is a given function with domain $(0,\ell)$. The Fourier cosine series of $\phi$ over $(0,\ell)$ is defined to be 
+    \[\phi(x) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty} A_n \cos\frac{n\pi x}{\ell}\]
+    where $0<x<\ell$ and $A_n$ are some coefficients.
+\end{defn}
+
+The properties of the system 
+\[\sbr{1,\ \cos\frac{\pi x}{\ell},\ \cos\frac{2\pi x}{\ell} \pd \cos\frac{n\pi x}{\ell},\dots}\]
+is muchly the same as the previously discussed system of sine functions. The orthogonality here is given by
+\[I_2 = \int_{0}^{L} \cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\ dx = \begin{cases}
+    L &,\ n=m=0\\
+    \frac{L}{2} &, n=m>0\\
+    0 &, n\neq m
+\end{cases}\]
+We now determine the coefficients $A_n$ in the cosine series. Multiplying $\cos \frac{m\pi x}{\ell}$ on both sides of Fourier cosine series of $\phi$, then take integration over $(0,\ell)$, we obtain
+\[\int_{0}^{\ell} \phi(x) \cos\frac{m\pi x}{\ell}\ dx = \frac{1}{2}A_0\int_{0}^{\ell}\cos\frac{m\pi x}{\ell}\ dx + \sum_{n=1}^{\infty} A_n \int_{0}^{\ell} \cos\frac{n\pi x}{\ell}\cos\frac{m\pi x}{\ell}\ dx\]
+By orthogonality and some algebraic manipulations, it implies that 
+\[A_m = \frac{2}{\ell} \int_{0}^{\ell}\phi(x)\cos\frac{m\pi x}{\ell}\ dx\]
+Again, since $A_m$ is arbitrary, the coefficients formula applies for all $m\in \Z_0^+$. We now get the full solution formula:
+
+\medskip
+
+\begin{thm}
+    The homogeneous heat equation with Neumann boundary conditions
+    \[u_t = ku_{xx},\ 0<x<\ell,\ t>0\]
+    \[u_x(0,t)=u_x(\ell,t)=0,\ t>0\]
+    \[u(x,0) = \phi(x),\ 0<x<\ell\]
+    where $k,\ell\in \R^+$ and $\phi$ is given function, has solution formula
+    \[u(x,t) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty} A_n \exp\br{-\br{\frac{n\pi }{\ell}}^2 kt} \cos \frac{n\pi x}{\ell}\]
+    where the coefficients $A_n$ are given by 
+    \[A_n = \frac{2}{\ell} \int_{0}^{\ell}\phi(x)\cos\frac{m\pi x}{\ell}\ dx\]
+    provided that the series formula $u(x,t)$ converges
+\end{thm}
+
+The same remark is also applicable here: the solution formula is valid only if the series converges.
+
+Next, we provide some examples of expanding a given function into Fourier cosine series:
+
+\medskip 
+
+\begin{ex}
+    We expand $\phi(x)=1$ where $x=(0,\ell)$ in Fourier cosine series. By the derivation, the coefficient is 
+    \[A_n = \frac{2}{\ell} \int_0^\ell \cos\frac{n\pi x}{\ell}\ dx\]
+    When $n=0$, we have 
+    \[A_0 = \frac{2}{\ell}\int_0^\ell 1\ dx = 2\]
+    When $n>0$, we have 
+    \[A_n = \frac{2}{n\pi}\left . \sin\frac{n\pi x}{\ell} \right \vert_0^\ell = \frac{2}{n\pi} [\sin n\pi - \sin 0] = 0\]
+    Thus the Fourier cosine expansion is trivial, in the sense that, by the formula:
+    \[1 = 1 + 0 \cos \frac{\pi x}{\ell} + 0 \cos\frac{2\pi x}{\ell} + \dots\]
+\end{ex}
+
+\begin{ex}
+    We expand $\phi(x)=x$ where $x\in(0,\ell)$ in Fourier cosine series. Evaluate the coefficents for $n=0$ we get 
+    \[A_0 = \frac{2}{\ell} \int_0^\ell x\ dx = \ell\]
+    For $n>0$, we shall apply integration by parts to obtain:
+    \begin{align*}
+        A_n &= \frac{2}{\ell}\int_0^\ell x \cos \frac{n\pi x}{\ell}\ dx \\
+        &= \frac{2}{n\pi} x \sin\left .\frac{n\pi x}{\ell}\right \vert_0^\ell - \frac{2}{n\pi}\int_0^\ell \sin\frac{n\pi x}{\ell}\ dx\\
+        &= 0 + \frac{2\ell}{n^2\pi^2} \cos\left . \cos \frac{n\pi x}{\ell}\right \vert^\ell_0\\
+        &= \frac{2\ell}{n^2 \pi^2} [(-1)^n-1]
+    \end{align*}
+    See that when $n>0$ is even we get $A_n = 0$, and when $n$ is odd we get $A_n = -\frac{4\ell}{n^2\pi^2}$
+    Thus the Fourier cosine series expansion is 
+    \[x = \frac{\ell}{2} - \frac{4\ell}{\pi^2} \sum_{k=0}^\infty \frac{1}{((2k+1)^2)}\cos \frac{(2k+1)\pi x}{\ell} \]
+    where we have eliminate all the zero terms in the initial sums, and rewrite the non-zero sums so that the summation starts from $0$ and increases by $1$.
+\end{ex}
+
+\section{Full Fourier Series}
+
+The full Fourier series is simply the combination of sine and cosine series. The formal definition is as follow:
+
+\medskip
+
+\begin{defn} (Fourier Series)
+    The full Fourier series (or more commonly, Fourier series) of $\phi(x)$ on $(-\ell,\ell)$ is given as 
+    \[\phi(x) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty}\br{A_n \cos\frac{n\pi x}{\ell} + B_n \sin\frac{n\pi x}{\ell}}\]
+    where the coefficients are given by:
+    \[A_n = \frac{1}{\ell} \int_{-\ell}^{\ell} \phi(x) \cos\frac{n\pi x}{\ell}\ dx,\quad n\in \Z^+_0\]
+    \[B_n = \frac{1}{\ell} \int_{-\ell}^{\ell} \phi(x) \sin\frac{n\pi x}{\ell}\ dx,\quad n\in \Z^+\]
+\end{defn}
+
+\todo{not done}
+
+\section{Completeness}
+
+Despite successfully deriving out the full solution formulas, we see that they are valid only when we have the series is converging. Thus, we study the convergence of the Fourier series.
+
+We give the three different types of divergences. The notation $S_N$ is used to denote the first $N$-th sum of the series. 
+
+\medskip 
+
+\begin{defn}[Pointwise Convergence]
+    The series $\sum f_n(x)$ converges pointwisely to $f(x)$ if each $x\in (a,b)$ we have 
+    \[\lim_{N\to \infty} S_N(x) = f(x)\]
+\end{defn}
+
+\begin{defn}[Uniform Convergence]
+    The series $\sum f_n(x)$ converges uniformly to $f(x)$ if we have 
+    \[\lim_{N\to \infty} \max_{x\in [a,b]}|f(x)- S_N(x)| = 0\]
+\end{defn}
+
+\begin{defn}[$L^2$-Convergence]
+    The series $\sum f_n(x)$ converges in the $L^2$-sense to $f(x)$ if we have 
+    \[\lim_{N\to \infty} \int_a^b |f(x)- S_N(x)|^2\ dx = 0\]
+\end{defn}
