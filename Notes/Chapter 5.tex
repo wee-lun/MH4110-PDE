@@ -234,7 +234,21 @@ The full Fourier series is simply the combination of sine and cosine series. The
     \[B_n = \frac{1}{\ell} \int_{-\ell}^{\ell} \phi(x) \sin\frac{n\pi x}{\ell}\ dx,\quad n\in \Z^+\]
 \end{defn}
 
-\todo{not done}
+The corresponding system to study here is the blend of the two previous:
+\[\sbr{1, \cos\frac{\pi x}{\ell}, \sin\frac{\pi x}{\ell}, \cos\frac{2\pi x}{\ell}, \sin\frac{2\pi x}{\ell} \many \cos\frac{n\pi x}{\ell}, \sin\frac{n\pi x}{\ell}, \dots}\]
+
+\medskip
+
+\begin{ex}
+    We expand $\phi(x)=x$ where $x\in [-\ell, \ell]$ in full Fourier series. The coefficients to solve are
+    \[A_n = \frac{1}{\ell} \int_{-\ell}^{\ell} x\cos\frac{n\pi x}{\ell}\ dx,\quad n\in \Z^+_0\]
+    and
+    \[B_n = \frac{1}{\ell} \int_{-\ell}^{\ell} x \sin\frac{n\pi x}{\ell}\ dx,\quad n\in \Z^+\]
+    Note that in $A_n$, the integrand $x\cos\frac{n\pi x}{\ell}$ is an odd function in the interval $(-\ell, \ell)$, so $A_n = 0$. On the other hand, for each $B_n$, performing integration by parts we get 
+    \[B_n = \frac{1}{\ell} \int_{-\ell}^{\ell} x \sin\frac{n\pi x}{\ell}\ dx = \left . \br{\frac{-x}{n\pi}\cos \frac{n\pi x}{\ell} + \frac{1}{n^2\pi^2}\sin\frac{n\pi x}{\ell}}\right \vert_{-\ell}^\ell = (-1)^{n+1}\frac{2\ell}{n\pi}\]
+    and thus the full Fourier series of $\phi(x)$ is 
+    \[x = \sum_{n=1}^{\infty} (-1)^{n+1}\frac{2\ell}{n\pi}\sin\frac{n\pi x}{\ell}\]
+\end{ex}
 
 \section{Completeness}
 
