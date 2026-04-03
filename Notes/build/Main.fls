@@ -293,6 +293,9 @@ INPUT build/Chapter 4.aux
 INPUT build/Chapter 5.aux
 INPUT build/Chapter 5.aux
 INPUT build/Chapter 5.aux
+INPUT build/Chapter 6.aux
+INPUT build/Chapter 6.aux
+INPUT build/Chapter 6.aux
 OUTPUT build/Main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -408,6 +411,11 @@ OUTPUT build/Chapter 5.aux
 INPUT ./Chapter 5.tex
 INPUT ./Chapter 5.tex
 INPUT Chapter 5.tex
+INPUT ./Chapter 6.tex
+OUTPUT build/Chapter 6.aux
+INPUT ./Chapter 6.tex
+INPUT ./Chapter 6.tex
+INPUT Chapter 6.tex
 INPUT build/Main.aux
 INPUT build/Chapter 1.aux
 INPUT build/Chapter 1.aux
@@ -424,6 +432,9 @@ INPUT build/Chapter 4.aux
 INPUT build/Chapter 5.aux
 INPUT build/Chapter 5.aux
 INPUT build/Chapter 5.aux
+INPUT build/Chapter 6.aux
+INPUT build/Chapter 6.aux
+INPUT build/Chapter 6.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

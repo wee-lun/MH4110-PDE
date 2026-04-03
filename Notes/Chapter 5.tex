@@ -272,3 +272,60 @@ We give the three different types of divergences. The notation $S_N$ is used to 
     The series $\sum f_n(x)$ converges in the $L^2$-sense to $f(x)$ if we have 
     \[\lim_{N\to \infty} \int_a^b |f(x)- S_N(x)|^2\ dx = 0\]
 \end{defn}
+
+The relationship of the these convergences is that uniform convergence implies both other convergences, but pointwise convergence and $L^2$-convergence do not imply each other. 
+
+A simple example of pointwise convergence but not uniform convergence and not $L^2$-convergence is given by the following example:
+\[f_n(x) = (1-x)x^{n-1} = x^{n-1} - x_n,\ x\in (0,1)\]
+In particular, we see that 
+\[\sum_{n=1}^{\infty} f_n(x) = \lim_{N\to \infty} \sum_{n=1}^{N} f_n(x) = \lim_{N\to \infty} \sum_{n=1}^{N}(x^{n-1} - x_n) = \lim_{N\to \infty} (1-x^N) = 1\]
+since $0<x<1$, so $\lim_{N\to \infty} x^N = 0$. This shows pointwise convergence of the series $\sum f_n(x)$ to $f(x) = 1$. 
+
+However, it is not converging uniformly, since 
+\[\max_{x\in [0,1]} |f(x)-S_N(x)| = \max_{x\in [0,1]} |1-(1-x^N)| = \max_{x\in [0,1]} |x^N| = 1\]
+and thus $\lim_{N\to \infty} \max_{x\in [0,1]} |f(x)-S_N(x)| = 1 \neq 0$. In othwe words, the convergence is not uniform.
+
+Lastly, we see that it is $L^2$-converging, since 
+\[\int_{0}^{1} |f(x)- S_N(x)|^2\ dx = \int_{0}^{1} |x^N|^2\ dx = \frac{1}{2N+1}\]
+If we take limit as $N\to \infty$ on both sides, we get that the limit approaches to $0$. By definition, the series is $L^2$-converging to $f(x)=1$.
+
+We now show a gallery of theorems that states the convergence of Fourier series. The first one is the uniform convergence of Fourier series.
+
+\medskip 
+
+\begin{thm} [Uniform Convergence of Fourier Sereies]
+    The Fourier (sine, consine, or full) series of $f(x)$ converges to $f(x)$ uniformly if, correspondingly, that:
+    \begin{itemize}
+        \item For sine series, $f(x)$ and $f'(x)$ are continuous on $[0,\ell]$ and $f(0)= f(\ell)=0$.
+        \item For cosine series, $f(x)$ and $f'(x)$ are continuous on $[0,\ell]$.
+        \item For full series, $f(x)$ and $f'(x)$ are continuous on $[-\ell, \ell]$ and $f(-\ell) = f(\ell)$.
+    \end{itemize}
+\end{thm}
+
+Next, the theorem that provides the condition of $L^2$-convergence of Fourier series:
+
+\medskip 
+
+\begin{thm} [$L^2$-Convergence of Fourier Series]
+    The Fourier series of $f(x)$ converges to $f(x)$ in the $L^2$-sense in $(a,b)$ if $f\in L^2(a,b)$, i.e.
+    \[\int_{a}^{b} |f(x)|^2\ dx < \infty\]
+\end{thm}
+Note that the condition is weak, in the sense that it is not difficult to satisfy such a condition. This means that a large class of functions converges in $L^2$-sense, for example the class of all continuous functions. 
+
+Lastly, we give the conditions on pointwise convergence of Fourier series:
+
+\medskip 
+
+\begin{thm} [Pointwise Convergence of Fourier Series] \hfill 
+    \begin{itemize}
+        \item If $f$ is a continuous function on $[a,b]$, and $f'$ is piecewise continuous on $[a,b]$, then the Fourier series (sine, consine, or full) of $f(x)$ converges to $f(x)$ pointwisely on $(a,b)$.
+        \item More generally, if both $f$ and $f'$ are piecewise continuous function on $[a,b]$, then the Fourier series of $f(x)$ converges to $f(x)$ at every point $x\in (-\infty, \infty)$. In particular, the convergence is given by 
+            \[\sum_n A_nX_n(x) = \frac{1}{2}\left(\lim_{h\to x^+}\tilde f(x) + \lim_{h\to x^-}\tilde f(x)\right),\ x\in \R\]
+        where $\tilde f$ is:
+        \begin{itemize}
+            \item odd extension of $f$ if the Fourier series is sine series.
+            \item even extension of $f$ if the Fourier series is cosine series.
+            \item periodic extension of $f$ if the Fourier series is full series.
+        \end{itemize}
+    \end{itemize}
+\end{thm}

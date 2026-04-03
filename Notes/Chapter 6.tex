@@ -1,0 +1,112 @@
+\chapter{Harmonic Functions}
+
+We have been investigating wave equations and heat equations. This chapter is devoted to study Laplace's equation. Recall that Laplace's equation is defined to be 
+\[\triangle u = 0\]
+where $\triangle$ is the Laplacian operator. In one, two, three dimensions, the equation is given by $u_{xx} = 0$, $u_{xx} + u_{yy}=0$, and $u_{xx} + u_{yy} + u_{zz}=0$ respectively. 
+
+Notice that Laplace's equation is a special case of heat and wave equation, where if the wave or diffusion process is stationary, i.e. $u_t=0$ and $u_{tt}=0$, then both equations reduce to Laplace's equation. 
+
+\section{Laplace's Equation}
+We study the solution structure of Laplace's equation in this section.
+
+\medskip
+
+\begin{defn} [Harmonic Function]
+    A function $u$ is called a harmonic function if 
+    \[\triangle u = 0\]
+    In other words, a harmonic function is a solution to some Laplace's equation.
+\end{defn}
+
+With some easy deduction, we show that the only harmonic function in one dimension is the linear function 
+\[ u(x) = ax + b\]
+Also, from complex analysis, we know that an analytic function of complex variable 
+\[f(z) = u(z) + iv(z)\]
+where $u$ and $v$ are real-valued functions, satisfies the Cauchy-Riemann equations:
+\[\begin{cases}
+    u_x = v_y \\
+    u_y = -v_x
+\end{cases}\]
+By differentiating and taking sums, we can show that $\triangle u = \triangle v = 0$, indicating that the real and imaginary parts of an analytic function are harmonic functions. 
+
+A generalization of Laplace's equation is the Poisson's equation:
+
+\medskip
+
+\begin{defn} [Poisson's Equation]
+    Poisson's equation is defined to be 
+    \[\triangle u = f\]
+    where $f$ is a given function. When $f=0$, the equation reduces to Laplace's equation.
+\end{defn}
+
+The problem we care is formulated as follow:
+
+\medskip 
+
+\begin{defn} [Boundary Value Problem of $D$-types for Poisson's Equation]
+    Let $D$ be a given domain, we denote the boundary as $\partial D$. The Poisson's equation with boundary conditions generally takes the form:
+    \[\triangle u = f \text{ in D}\]
+    \[u = h \text{ or } \diffp{u}{{\mathbf n}} = h \text{ or } \diffp{u}{{\mathbf n}} + cu = h \text{ on } \partial D\]
+    where $h$ is some given value and $\mathbf n$ is the unit outer normal along $\partial D$.
+\end{defn}
+
+We will show that the solution to the above problem is unique. To do this, we need the following theorem:
+
+\medskip 
+
+\begin{thm} [Maximum Principle for Harmonic Functions]
+    Let $D$ be a connected bounded open set (of two or three dimensions, could be simply or multiply connected). Let $u$ be a harmonic function in $D$ which is continuous on $\bar D = D \cup \partial D$. Then the maximum and minimum value of $u$ are attained on $\partial D$, and nowhere in $D$, unless $u$ is a constant function. Mathematically, 
+    \[\max_{x\in \bar D} u(x) = u(x_0)\ \exists x_0\in \partial D \qand u(x) \leq u(x_0)\ \forall x\in D \]
+    with equality holds only if $u$ is a constant function. The same applies to the minimum value of $u$.
+\end{thm}
+
+We now show the uniqueness of the solution to the boundary value problem of $D$-types for Poisson's equation. Suppose that given a boundary value problem of mentioned type, and we have $u$ and $v$ are two solutions to the problem. We want to show that $u\equiv v$ in $D$. 
+
+Let $w := u-v$. Then we have $\triangle w = \triangle (u-v) = \triangle u - \triangle v = f-f = 0$ in $D$. Also, the boundary condition of $w$ is obtained from $w = u-v = h-h = 0$ on $\partial D$. Together, this shows that $w$ is a harmonic function in $D$. Clearly
+\[\min_{x\in D}w(x) \leq w(x) \leq \max_{x\in D}w(x)\ \forall x\in D\]
+By maximum principle, we know that the maximum and minimum value of $w$ are attined on $\partial D$. But we show that $w=0$ on $\partial D$, thus the above inequality reduces to $0\leq w(x) \leq 0$ for all $x\in D$, implying that 
+\[u-v = w = 0 \text{ in } D\]
+This shows that $u\equiv v$ in $D$.
+
+Before ending the section, we give a property on Laplace operator.
+
+\medskip
+
+\begin{defn} [Translation and Rotation]
+    Let $(x,y)$ be a point in $\R^2$. A translation (or shifting) of the point by $(a,b)$ is defined to be the transform:
+    \[m := x+a \qand n:= y+b\]
+    A rotation of the point by angle $\alpha$ is defined to be the transform:
+    \[m:= x\cos \alpha + y\sin \alpha \qand n:= -x\sin\alpha + y\cos \alpha\]
+\end{defn}
+
+\begin{pro} [Invariance of Laplace Operator under Rigid Motion]
+    The Laplace operator is invariant under translation and rotation. In other words, inheriting the notation in the above definition, we have 
+    \[u_{xx} + u_{yy} = u_{mm} + u_{nn}\]
+    where $(m,n)$ is the translation or rotation of $(x,y)$. 
+\end{pro}
+
+The proof is omitted, as it could be done by direct verification by applying chain rule.
+
+\section{Rectangles and Cubes}
+
+In this section, we demonstrate the technique of separation of variables to solve the Laplace's equation in a rectangle. 
+
+\medskip 
+
+\begin{defn} [Laplace's Equation in a Rectangle]
+    The Laplace' equation in a rectangle $D := (0,a) \times (b,0)$ is given by
+    \[\triangle u = u_{xx} + u_{yy} = 0,\ (x,y)\in D\]
+    \[u\vert_{x=0} = 0,\ u_x \vert_{x=a}=0\ \text{(left and right boundaries)}\]
+    \[(u_y + u)\vert_{y=0} = 0,\ u\vert_{y=b} = g(x)\ \text{(bottom and top boundaries)}\]
+\end{defn}
+
+We solve the above problem by considering a separated solution 
+\[u(x,y) = X(x)Y(y)\]
+which should satisfy the boundary conditions. Substituting into the PDE we have 
+\[X''(x)Y(y) + X(x)Y''(y) = 0 \implies \frac{X''(x)}{X(x)} = -\frac{Y''(y)}{Y(y)} := -\lambda\]
+Here $\lambda$ must be a constant (see previous chapter for details). Also $X(x)$ is the solution to the eigen-problem:
+\[X''(x) + \lambda X(x) = 0 \text{ where } X(0) = X'(a) = 0\]
+For a non-trivial solution, the boundary conditions $X(0) = X'(a) = 0$ force $\lambda>0$. The solutions are 
+\[\lambda_n = \br{n + \frac{1}{2}}^2 \frac{\pi^2}{a^2},\ n\in \Z^+_0\]
+\[X_n(x) = \sin\beta_n x \text{ where } \beta_n := \sqrt{\lambda_n}\]
+
+\section{Poisson's Formula}

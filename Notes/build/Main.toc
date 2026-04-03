@@ -24,3 +24,7 @@
 \contentsline {section}{\numberline {5.2}Fourier Cosine Series}{50}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Full Fourier Series}{52}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Completeness}{52}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Harmonic Functions}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Laplace's Equation}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Rectangles and Cubes}{56}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Poisson's Formula}{57}{section.6.3}%
